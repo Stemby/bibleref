@@ -1,0 +1,39 @@
+LaTeX Class File : bibleref v1.14
+
+Last Modified : 2011-01-19
+
+Author        : Nicola Talbot
+
+Files         : bibleref.dtx   - documented source file
+                bibleref.ins   - installation script
+
+
+The package file bibleref.sty can be used to ensure
+consistent formatting of bible citations. Also comes with
+bibleref-xidx.sty for extended bibleref indexing functions.
+
+INSTALLATION
+
+To extract the code do:
+
+latex bibleref.ins
+
+Put bibleref somewhere on TeX's path and refresh the database.
+
+To extract the documentation do:
+
+latex bibleref.dtx
+
+A sample file, sample.tex, is provided. This will be extracted
+along with the style file bibleref.sty.
+
+REQUIREMENTS
+
+ifthen
+fmtcount
+amsgen
+
+This material is subject to the LaTeX Project Public License.
+See  http://www.ctan.org/tex-archive/help/Catalogue/licenses.lppl.html for the details of that license.
+
+http://theoval.cmp.uea.ac.uk/~nlct/

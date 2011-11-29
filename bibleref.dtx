@@ -2,16 +2,19 @@
 % bibleref.dtx generated using makedtx version 0.94b (c) Nicola Talbot
 % Command line args:
 %   -macrocode "bibleref.perl"
+%   -macrocode ".+\.ist"
 %   -setambles ".*\.perl=>\nopreamble\nopostamble"
 %   -comment "bibleref.perl"
 %   -comment ".+\.tex"
+%   -comment ".+\.ist"
 %   -src "(.+)\.(sty)=>\1.\2"
-%   -src "(.+)\.(tex)=>\1.\2"
+%   -src "(sample.*)\.(tex)=>\1.\2"
+%   -src "(.+)\.(ist)=>\1.\2"
 %   -src "bibleref.perl\Z=>bibleref.perl"
 %   -doc "bibleref-manual.tex"
 %   -author "Nicola Talbot"
 %   bibleref
-% Created on 2010/7/7 10:21
+% Created on 2011/1/19 22:37
 %\fi
 %\iffalse
 %<*package>
@@ -34,7 +37,7 @@
 %\fi
 % \iffalse
 % Doc-Source file to use with LaTeX2e
-% Copyright (C) 2010 Nicola Talbot, all rights reserved.
+% Copyright (C) 2011 Nicola Talbot, all rights reserved.
 % \fi
 % \iffalse
 %<*driver>
@@ -48,14 +51,15 @@
 
 
 
-\CheckSum{1893}
+\CheckSum{2503}
+\OnlyDescription
 
 \begin{document}
 \DocInput{bibleref.dtx}
 \end{document}
 %</driver>
 %\fi
-%\title{bibleref.sty v1.13:
+%\title{bibleref.sty v1.14:
 %a \LaTeXe\ package for typesetting bible references}
 %\author{Nicola Talbot\\[10pt]
 %School of Computing Sciences\\
@@ -63,7 +67,7 @@
 %Norwich. Norfolk. NR4 7TJ.\\
 %United Kingdom\\
 %\url{http://theoval.cmp.uea.ac.uk/~nlct/}}
-%\date{2010-07-07}
+%\date{2011-01-19}
 %
 %\maketitle
 %\tableofcontents
@@ -79,11 +83,19 @@
 %This command can be used to cite a bible book, chapter or verse 
 %or range of chapters or verses.
 %
+%\begin{important}
+%Be careful if you use \sty{bibleref} with \sty{babel} as some of 
+%\styfmt{babel}'s language options make the colon character active,
+%which will cause a problem for \cs{bibleverse} (and \ics{ibibleverse},
+%described later). Check the \styfmt{babel} documentation to find out
+%how to make the colon non-active.
+%\end{important}
+%
 %The book title, \meta{book title}, may be given either as the
 %full title (e.g.\ \texttt{Matthew}) or as an abbreviation (e.g.\
 %\texttt{Mt} or \texttt{Matt}), most standard abbreviations are
 %recognised.  Books with multiple parts should be preceded by the
-%book number in uppercase roman numerals. For example, the second
+%book number in uppercase Roman numerals. For example, the second
 %book of Kings should be entered as \verb|\bibleverse{IIKings}|
 %
 %You may have any number, or zero, sets of parenthesis
@@ -104,6 +116,11 @@
 %be entered as \texttt(\meta{ch}\texttt:\meta{v}\texttt{)-(}\meta
 %{ch}\texttt:\meta{v}\texttt)
 %
+%If there is no verse, but there are multiple chapters or chapter
+%ranges, these may be specified in the \meta{chapter} part, using a
+%comma to separate individual chapters and a hyphen to separate
+%ranges. Note that you still need a colon at the end of the list.
+%
 %Examples:
 %\begin{center}
 %\begin{tabular}{ll}
@@ -116,7 +133,8 @@
 %\verb|\bibleverse{Ex}(15:)(17:)(20:)| & \bibleverse{Ex}(15:)(17:)(20:)\\
 %\verb|\bibleverse{Rev}(1:2,5,7-9,11)| & \bibleverse{Rev}(1:2,5,7-9,11)\\
 %\verb|\bibleverse{IChronicles}(1:3)-(2:7)| &
-%\bibleverse{IChronicles}(1:3)-(2:7)
+%\bibleverse{IChronicles}(1:3)-(2:7)\\
+%\verb|\bibleverse{Luke}(1,4-5,8:)| &\bibleverse{Luke}(1,4-5,8:)
 %\end{tabular}
 %\end{center}
 %
@@ -205,10 +223,13 @@
 %\end{verbatim}
 %Note the use of \verb|##1| instead of \verb|#1|.
 %
+%If you want to distribute a new style, see
+%section~\ref{sec:distnewstyles}.
+%
 %\section{Indexing Bible References}
 %
 %\begin{definition}[\DescribeMacro{\ibibleverse}]
-%\cs{ibibleverse}\marg{book title}\texttt(\marg{chapter}\texttt{:}\meta{verse(s)}\texttt)
+%\cs{ibibleverse}\oarg{format}\marg{book title}\texttt(\marg{chapter}\texttt{:}\meta{verse(s)}\texttt)
 %\end{definition}
 %This does the same as \cs{bibleverse}
 %but also adds an index entry (provided you have used 
@@ -225,6 +246,19 @@
 %\end{verbatim}
 %(Note there is no backslash.)
 %
+%\begin{definition}[\DescribeMacro{\ibiblechvs}]
+%\cs{ibiblechvs}\oarg{format}\marg{book title}\texttt(\marg{chapter}\texttt{:}\meta{verse(s)}\texttt)
+%\end{definition}
+%This is similar to \cs{ibibleverse} except that it doesn't display
+%the book name in the text. The reference is indexed under the book
+%title in the same way as \cs{ibibleverse}.
+%
+%\begin{definition}[\DescribeMacro{\ibiblevs}]
+%\cs{ibiblevs}\oarg{format}\marg{book title}\texttt(\marg{chapter}\texttt{:}\meta{verse(s)}\texttt)
+%\end{definition}
+%This is similar to \cs{ibiblechvs} except that it only displays the 
+%verse(s) in the text.
+%
 %You may need to create your own custom \app{makeindex} style file
 %as the default uses a comma and space to separate the item from
 %the page number, which may cause confusion. For example, you
@@ -236,6 +270,67 @@
 %delim_2 "\\dotfill "
 %\end{verbatim}
 %See the \app{makeindex} documentation for further details.
+%
+%\subsection{Index Categories}
+%
+%You may prefer to index the bible reference under a category with
+%the book title as a sub item of that category. This can be achieved
+%using:
+%\begin{definition}[\DescribeMacro{\biblerefcategory}]
+%\cs{biblerefcategory}\oarg{sort key}\marg{category title}
+%\end{definition}
+%The optional argument is the sort key to be used by
+%\app{makeindex} or \app{xindy}. If omitted \meta{category title} is
+%used.
+%
+%Note that \ics{ibibleverse}, \ics{ibiblechvs} and \ics{ibiblevs} 
+%use the category that is currently set. If you need to keep
+%switching categories, you may find it easier to define a shortcut
+%command. For example, suppose you're discussing the differences
+%between the King James and the New Jerusalem versions, you could
+%define the following:
+%\begin{verbatim}
+%\newcommand{\kjref}{\biblerefcategory{King James}\ibibleverse}
+%\newcommand{\njref}{\biblerefcategory{New Jerusalem}\ibibleverse}
+%\end{verbatim}
+%You can now use \cs{kjref} and \cs{njref} in the same way that you
+%would use \cs{ibibleverse}
+%
+%You can disable the category by setting it to nothing:
+%\begin{verbatim}
+%\biblerefcategory{}
+%\end{verbatim}
+%
+%\subsection{The \sty{bibleref-xidx} Package}
+%
+%The \sty{bibleref} package comes with a supplementary package
+%\sty{bibleref-xidx} that modifies the way bible references are added to 
+%the index. With no package options, i.e., just
+%\begin{verbatim}
+%\usepackage{bibleref-xidx}
+%\end{verbatim}
+%the verses will appear as sub-items of the chapters. Note that a
+%verse range will be considered a single item so, for example,
+%\begin{verbatim}
+%\ibibleverse{Ex}(9:1)
+%\ibibleverse{Ex}(9:4)
+%\ibibleverse{Ex}(9:1-4)
+%\end{verbatim}
+%will occur as three separate entries under Exodus chapter~9.
+%Also note that \verb|(9-14:)| and \verb|(9:)-(14:)| will be treated
+%differently.
+%
+%The \sty{bibleref-xidx} package can be loaded with the following options:
+%\begin{description}
+%\item[\pkgopt{noverses}] Don't show the verses in the index.
+%\item[\pkgopt{verses}] Show the verses (and chapters) in the index
+%(default).
+%\item[\pkgopt{nochapters}] Don't show the chapters (and verses) in the 
+%index.
+%\item[\pkgopt{chapters}] Show the chapters in the index (default).
+%\end{description}
+%All other package options will be passed to the \sty{bibleref}
+%package, which \sty{bibleref-xidx} automatically loads.
 %
 %\subsection{Separate Scripture Index}
 %
@@ -305,11 +400,77 @@
 %...
 %\end{verbatim}
 %
+%\section{Distributing New Styles}
+%\label{sec:distnewstyles}
+%
+%If you want a new bible reference style (or translation) publicly
+%available, then it's a good idea to upload it to CTAN
+%(\url{www.ctan.org}). If you've never done this before, you might
+%find it a bit daunting, so here are a few pointers.
+%
+%I suggest that you give the name of your new package the prefix \texttt{bibleref-} as
+%then it will appear close to \sty{bibleref} in the alphabetical list
+%in the catalogue. Suppose your new style is called
+%``mystyle''\footnote{Choose a more descriptive name than this.},
+%then create a file called \texttt{bibleref-mystyle.sty}. At the
+%start of the file, do:
+%\begin{verbatim}
+%\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{bibleref-mystyle}[2011/01/19 v1.0 Bible reference
+%style conforming to something or other]
+%\end{verbatim}
+%(Change the date and the brief description in the line above to 
+%something more appropriate.) Next you need to load \sty{bibleref}:
+%\begin{verbatim}
+%\RequirePackage{bibleref}
+%\end{verbatim}
+%Now do the new style stuff (or redefine styles to provide
+%translations):
+%\begin{verbatim}
+%\newbiblerefstyle{mystyle}{%
+%\biblerefstyle{default}%
+%\renewcommand{\BRversestyle}[1]{\romannumeral##1}%
+%\setbooktitle{Revelation}{Apocalypse}%
+%}
+%\end{verbatim}
+%(Again change the above to whatever is appropriate.) Put any new
+%book definitions that your style may require, for example:
+%\begin{verbatim}
+%\addbiblebook{Susanna}{Story of Susanna}
+%\end{verbatim}
+%and add any \cs{biblerefmap} commands that are required. Then set
+%your new style as the current style, if appropriate:
+%\begin{verbatim}
+%\biblerefstyle{mystyle}
+%\end{verbatim}
+%On the last line of the file add:
+%\begin{verbatim}
+%\endinput
+%\end{verbatim}
+%
+%Next you need to create a file called ``README'' that contains some
+%information about your new package, including what license you want
+%to distribute it under. (If you don't know anything about licenses, 
+%I recommend you choose the \LaTeX\ Project Public License, LPPL.)
+%
+%It's worth adding a sample file or a little bit of documentation
+%that illustrates how the references appear.
+%
+%Put your .sty file, README file and samples or documentation into a
+%zip archive. You're now ready to upload it. There are several upload
+%pages. The main one is at \url{http://www.ctan.org/upload.html}.
+%The name of your contribution is the name of your package
+%(``bibleref-mystyle'' in this example). Remember to put your name
+%and email in the relevant input boxes. Sometime after you've
+%uploaded your zip file, you'll get a copy of the announcement from
+%one of the CTAN maintainers. It usually takes a day to establish
+%itself. After that people can download and use it.
+%
 %\section{Acknowledgements}
 %Many thanks to all the useful comments from comp.text.tex, 
 %especially from Jesse~Billett, Brooks~Moses and Ulrich~M.~Schwarz.
 %
-%\StopEventually{\phantomsection
+%\StopEventually{\clearpage\phantomsection
 %\addcontentsline{toc}{section}{Index}
 %\PrintIndex
 %}
@@ -319,13 +480,468 @@
 %\section{The Code}
 %\iffalse
 %    \begin{macrocode}
+%<*bibleref-xidx.sty>
+%    \end{macrocode}
+%\fi
+% Declare \sty{bibleref-xidx} package
+%    \begin{macrocode}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bibleref-xidx}[2011/01/19 v1.0 (NLCT) Extended indexing support for bibleref]
+%    \end{macrocode}
+%\begin{macro}{\if@br@indexchapters}
+% Provide switch to determine whether or not to add chapters to the
+% index
+%    \begin{macrocode}
+\newif\if@br@indexchapters
+\@br@indexchapterstrue
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\if@br@indexverses}
+% Provide switch to determine whether or not to add verses to the
+% index
+%    \begin{macrocode}
+\newif\if@br@indexverses
+\@br@indexversestrue
+%    \end{macrocode}
+%\end{macro}
+% Declare package options:
+%    \begin{macrocode}
+\DeclareOption{verses}{\@br@indexchapterstrue\@br@indexversestrue}
+\DeclareOption{noverses}{\@br@indexversesfalse}
+\DeclareOption{chapters}{\@br@indexchaptersfalse}
+\DeclareOption{nochapters}{\@br@indexchaptersfalse\@br@indexversesfalse}
+%    \end{macrocode}
+% Pass remaining options to \sty{bibleref}:
+%    \begin{macrocode}
+\DeclareOption*{\PassOptionsToPackage{\CurrentOption}{bibleref}}
+%    \end{macrocode}
+% Process options
+%    \begin{macrocode}
+\ProcessOptions
+%    \end{macrocode}
+% Load \sty{bibleref} package:
+%    \begin{macrocode}
+\RequirePackage{bibleref}
+%    \end{macrocode}
+%
+%\begin{macro}{\@bibleverse}
+% Redefine \cs{@bibleverse} (processes chapter number).
+%    \begin{macrocode}
+\def\@bibleverse(#1:{%
+  \def\@bv@chidxsort{}%
+  \def\@bv@chidxentry{}%
+  \@br@chsty{#1}%
+  \@@bibleverse
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bibleverser}
+% Redefine \cs{@bibleverser} (end of range).
+%    \begin{macrocode}
+\def\@bibleverser-(#1:{%
+  \def\@bv@chidxsort{}%
+  \def\@bv@chidxentry{}%
+  \@br@chsty{#1}%
+  \@@bibleverse
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@@bibleverse}
+% Redefine \cs{@@bibleverse} (processes verse list)
+%    \begin{macrocode}
+\def\@@bibleverse#1){%
+  \def\@bv@tmp{#1}%
+  \ifx\@bv@tmp\@empty
+%    \end{macrocode}
+% If no verses specified, do the index for the current
+% chapter.
+%    \begin{macrocode}
+    \@bvx@dochindex
+  \else
+    \BRchvsep
+    \@br@vrsty{#1}%
+  \fi
+  \new@ifnextchar(%
+    {\BRchsep\@bibleverse}%
+    {\new@ifnextchar-%
+       {\protect\BRvrsep\@bibleverser}%
+       {\@end@@bibleverse}%
+    }%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@brx@dochsep}
+% Define what to do between chapters in a list.
+%    \begin{macrocode}
+\newcommand*{\@brx@dochsep}{%
+  \@bvx@chdo{\protect\BRvsep}%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@br@chsty}
+%    \begin{macrocode}
+\renewcommand*{\@br@chsty}[1]{%
+  \let\@brx@chsep\@empty
+  \@for\@brx@thisch:=#1\do{%
+%    \end{macrocode}
+% Index previous chapter entry in current list, if it exists
+%    \begin{macrocode}
+    \@bvx@dochindex
+    \@brx@chsep
+    \expandafter\@@br@chsty\@brx@thisch-\@nil\end
+    \let\@brx@chsep\@brx@dochsep
+  }%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@brx@dovssep}
+% Define what to do between verses in a list.
+%    \begin{macrocode}
+\newcommand*{\@brx@dovssep}{%
+  \@bvx@vsdo{\protect\BRvsep}%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@br@vrsty}
+% Redefine \cs{@br@vrsty} (processes verses).
+%    \begin{macrocode}
+\renewcommand*{\@br@vrsty}[1]{%
+  \let\@brx@vssep\@empty
+  \@for\@brx@thisvs:=#1\do{%
+    \def\@bv@vsidxentry{}%
+    \def\@bv@vsidxsort{}%
+    \@brx@vssep
+    \expandafter\@@br@vrsty\@brx@thisvs-\@nil\end
+    \let\@brx@vssep\@brx@dovssep
+    \@bvx@dovsindex
+  }%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@@br@vrsty}
+% Process individual verse or verse range.
+%    \begin{macrocode}
+\def\@@br@vrsty#1-#2\end{%
+  \ifx\@nil#2\relax
+    \@do@verse{#1}%
+  \else
+    \@do@verserange{#1}#2%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@do@verse}
+% Process individual verse.
+%    \begin{macrocode}
+\renewcommand{\@do@verse}[1]{%
+  \@nodo@verse{#1}%
+  \expandafter\@bvx@vsdo\expandafter{\@br@tmp}%
+  \@bv@addtovsidxsort{-000}%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@@br@chsty}
+% Process individual chapter or chapter range.
+%    \begin{macrocode}
+\def\@@br@chsty#1-#2\end{%
+  \ifx\@nil#2\relax
+    \@do@chapter{#1}%
+  \else
+    \@do@chapterrange{#1}#2%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@do@chapter}
+% Process individual chapter.
+%    \begin{macrocode}
+\newcommand{\@do@chapter}[1]{%
+  \@nodo@chapter{#1}%
+  \@bvx@chdo{\protect\BRchapterstyle{#1}}%
+  \@bv@addtochidxsort{-000}%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@do@chapter}
+% Process chapter sort info.
+%    \begin{macrocode}
+\renewcommand*{\@nodo@chapter}[1]{%
+  \ifnum0#1<10\relax
+    \@bv@setchidxsort{00#1}%
+  \else
+    \ifnum0#1<100\relax
+      \@bv@setchidxsort{0#1}%
+    \else
+      \@bv@setchidxsort{#1}%
+    \fi
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@do@chapterrange}
+% Process chapter range.
+%    \begin{macrocode}
+\def\@do@chapterrange#1#2-\@nil{%
+  \@nodo@chapter{#1}%
+  \@bvx@chdo{\protect\BRchapterstyle{#1}}%
+  \@bv@addtochidxsort{-}%
+  \@bvx@chadddo{\protect\BRvrsep}%
+  \@nodo@chapter{#2}%
+  \@bvx@chadddo{\protect\BRchapterstyle{#2}}%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@nodo@verse}
+% Process verse sort info and stores style in \cs{@br@tmp}.
+%    \begin{macrocode}
+\renewcommand*{\@nodo@verse}[1]{%
+  \br@stripverse{#1}%
+  \ifnum\@br@versenum<10\relax
+    \@bv@addtovsidxsort{00#1}%
+  \else
+    \ifnum\@br@versenum<100\relax
+      \@bv@addtovsidxsort{0#1}%
+    \else
+      \@bv@addtovsidxsort{#1}%
+    \fi
+  \fi
+  \ifx\@br@versesuffix\@empty
+    \protected@edef\@br@tmp{%
+       \protect\BRversestyle{\@br@versenum}%
+    }%
+  \else
+    \protected@edef\@br@tmp{%
+       \protect\BRversestyle{\@br@versenum}%
+       \protect\BRversesuffixstyle{\@br@versesuffix}%
+    }%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@do@verserange}
+% Process verse range.
+%    \begin{macrocode}
+\def\@do@verserange#1#2-\@nil{%
+  \@nodo@verse{#1}%
+  \expandafter\@bvx@vsdo\expandafter{\@br@tmp}%
+  \@bv@addtovsidxsort{-}%
+  \@bvx@vsadddo{\protect\BRvrsep}%
+  \@nodo@verse{#2}%
+  \expandafter\@bvx@vsadddo\expandafter{\@br@tmp}%
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@setvsidxsort}
+% Set the verse sort information.
+%    \begin{macrocode}
+\newcommand*{\@bv@setvsidxsort}[1]{%
+\if@bv@idx
+  \protected@edef\@bv@vsidxsort{#1}%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@addtovsidxsort}
+% Add to the verse sort information.
+%    \begin{macrocode}
+\newcommand*{\@bv@addtovsidxsort}[1]{%
+\if@bv@idx
+  \@bv@tmpa={#1}%
+  \@bv@tmpb=\expandafter{\@bv@vsidxsort}%
+  \protected@edef\@bv@vsidxsort{\the\@bv@tmpb\the\@bv@tmpa}%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@setvsidx}
+% Set the verse entry information.
+%    \begin{macrocode}
+\newcommand*{\@bv@setvsidx}[1]{%
+\if@bv@idx
+  \def\@bv@vsidxentry{#1}%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@addtovsidx}
+% Add to the verse entry information.
+%    \begin{macrocode}
+\newcommand*{\@bv@addtovsidx}[1]{%
+\if@bv@idx
+  \@bv@tmpa={#1}%
+  \@bv@tmpb=\expandafter{\@bv@vsidxentry}%
+  \protected@edef\@bv@vsidxentry{\the\@bv@tmpb\the\@bv@tmpa}%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@setchidx}
+% Set the chapter entry information.
+%    \begin{macrocode}
+\newcommand*{\@bv@setchidx}[1]{%
+\if@bv@idx
+  \def\@bv@chidxentry{#1}%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@addtochidx}
+% Add to the chapter entry information.
+%    \begin{macrocode}
+\newcommand*{\@bv@addtochidx}[1]{%
+\if@bv@idx
+  \@bv@tmpa={#1}%
+  \@bv@tmpb=\expandafter{\@bv@chidxentry}%
+  \protected@edef\@bv@chidxentry{\the\@bv@tmpb\the\@bv@tmpa}%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@setchidxsort}
+% Set the chapter sort information.
+%    \begin{macrocode}
+\newcommand*{\@bv@setchidxsort}[1]{%
+\if@bv@idx
+  \protected@edef\@bv@chidxsort{#1}%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bvx@chdo}
+% Display argument and set as chapter entry information
+%    \begin{macrocode}
+\newcommand*{\@bvx@chdo}[1]{#1\@bv@setchidx{#1}}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bvx@vsdo}
+% Display argument and set as verse entry information
+%    \begin{macrocode}
+\newcommand*{\@bvx@vsdo}[1]{#1\@bv@setvsidx{#1}}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bvx@chadddo}
+% Display argument and adds to chapter entry information
+%    \begin{macrocode}
+\newcommand*{\@bvx@chadddo}[1]{#1\@bv@addtochidx{#1}}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bvx@vsadddo}
+% Display argument and adds to verse entry information
+%    \begin{macrocode}
+\newcommand*{\@bvx@vsadddo}[1]{#1\@bv@addtovsidx{#1}}
+%    \end{macrocode}
+%\end{macro}
+% Store original definition of \cs{@bible@verse}
+%    \begin{macrocode}
+\let\@bv@org@bible@verse\@bible@verse
+%    \end{macrocode}
+%
+%\begin{macro}{\@bible@verse}
+% Redefine \cs{@bible@verse}
+%    \begin{macrocode}
+\renewcommand*{\@bible@verse}{%
+  \def\@bv@chidxentry{}%
+  \@bv@org@bible@verse
+}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@end@@bibleverse}
+% Redefine \cs{@end@@bibleverse}
+%    \begin{macrocode}
+\renewcommand*{\@end@@bibleverse}{%
+%    \end{macrocode}
+% If no chapters specified, index just the book.
+%    \begin{macrocode}
+  \ifx\@bv@chidxentry\@empty
+    \@bvx@dobkindex
+  \else
+    \if@br@indexchapters
+    \else
+%    \end{macrocode}
+% Only indexing book, so index hasn't been done yet.
+%    \begin{macrocode}
+       \@bvx@dobkindex
+    \fi
+  \fi
+  \@bv@idxfalse
+  \@bv@restore
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@bvx@dochindex}
+% Writes the indexing information for the current bible chapter (no
+% verse information specified).
+%    \begin{macrocode}
+\newcommand*{\@bvx@dochindex}{%
+\if@br@indexchapters
+  \ifx\@bv@chidxentry\@empty
+  \else
+    \if@bv@idx
+      \expandafter\@do@bibleref@map\@@bv@idxsort\relax
+      \@do@biblerefindex
+        {\@@bv@idxsort\relax @\@bv@mainidxentry
+           !\@bv@chidxsort @\@bv@chidxentry
+           |\@bv@idxpgformat}%
+    \fi
+  \fi
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@bvx@dovsindex}
+% Writes the indexing information for the current bible chapter and
+% verse.
+%    \begin{macrocode}
+\newcommand*{\@bvx@dovsindex}{%
+\if@br@indexverses
+  \ifx\@bv@vsidxentry\@empty
+  \else
+    \if@bv@idx
+      \expandafter\@do@bibleref@map\@@bv@idxsort\relax
+      \@do@biblerefindex
+        {\@@bv@idxsort\relax @\@bv@mainidxentry
+           !\@bv@chidxsort @\@bv@chidxentry
+           !\@bv@vsidxsort @\@bv@vsidxentry
+           |\@bv@idxpgformat}%
+    \fi
+  \fi
+\else
+  \@bvx@dochindex
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@bvx@dobkindex}
+% Writes the indexing information for the current book (no chapter
+% or verses specified).
+%    \begin{macrocode}
+
+\newcommand*{\@bvx@dobkindex}{%
+  \if@bv@idx
+    \expandafter\@do@bibleref@map\@@bv@idxsort\relax
+    \@do@biblerefindex
+      {\@@bv@idxsort\relax @\@bv@mainidxentry|\@bv@idxpgformat}%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%\iffalse
+%    \begin{macrocode}
+%</bibleref-xidx.sty>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
 %<*bibleref.sty>
 %    \end{macrocode}
 %\fi
 % Declare package
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{bibleref}[2010/07/07 1.13 (NLCT)]
+\ProvidesPackage{bibleref}[2011/01/19 1.14 (NLCT)]
 %    \end{macrocode}
 % Need to do some conditional stuff
 %    \begin{macrocode}
@@ -1043,22 +1659,22 @@
 \newcommand*{\brs@text}{%
 \biblerefstyle{default}%
 \renewcommand{\BRbooknumberstyle}[1]{%
-\Ordinalstringnum{##1}\ }%
+\protect\Ordinalstringnum{##1}\ }%
 \renewcommand{\BRepistlenumberstyle}[1]{%
-\Ordinalstringnum{##1}\ }%
+\protect\Ordinalstringnum{##1}\ }%
 \renewcommand{\BRbookof}{Book of }%
 \renewcommand{\BRgospel}{Gospel according to St }%
 \renewcommand{\BRepistletothe}{Epistle to the }%
 \renewcommand{\BRepistleto}{Epistle to }%
 \renewcommand{\BRepistleof}{Epistle of }%
 \renewcommand{\BRchapterstyle}[1]{%
-chapter \numberstringnum{##1}}%
+chapter \protect\numberstringnum{##1}}%
 \renewcommand{\BRbkchsep}{, }%
 \renewcommand{\BRchvsep}{ verse }%
 \renewcommand{\BRchsep}{, }%
 \renewcommand{\BRvrsep}{ to }%
 \renewcommand{\BRvsep}{, }%
-\renewcommand{\BRversestyle}[1]{\numberstringnum{##1}}%
+\renewcommand{\BRversestyle}[1]{\protect\numberstringnum{##1}}%
 \renewcommand*{\BRversesuffixstyle}[1]{##1}%
 }
 %    \end{macrocode}
@@ -1163,6 +1779,81 @@ defined}{}}}
 %    \end{macrocode}
 %\end{macro}
 %
+%\begin{macro}{\@br@chsty}
+%\changes{1.14}{2011/01/19}{new}
+% Chapters may be supplied as a range. Provide a command
+% to detect whether single number or range supplied.
+%    \begin{macrocode}
+\newcommand*{\@br@chsty}[1]{\@@br@chsty#1-\@nil\end}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@@br@chsty}
+% Pick up a range
+%    \begin{macrocode}
+\def\@@br@chsty#1-#2\end{%
+\@do@chapters#1,\relax\end
+\ifx\@nil#2\relax
+\else
+  \@bv@addtochidxsort{-}%
+  \@bv@do{\protect\BRvrsep}%
+  \@@br@chsty#2\end%
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@dochapters}
+% Pick up a list
+%    \begin{macrocode}
+\def\@do@chapters#1,#2\end{%
+\def\@br@tmp{#1}%
+\ifx\@br@tmp\@empty
+\else
+  \@biblech{#1}%
+\fi
+\ifx\relax#2\relax
+\else
+  \@bv@addtochidxsort{,}%
+  \@bv@do{\protect\BRvsep}%
+  \@do@chapters#2\end
+\fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%
+%\begin{macro}{\@biblech}
+%\changes{1.14}{2011/01/19}{new}
+% Deal with individual chapter.
+%    \begin{macrocode}
+\newcommand*{\@biblech}[1]{%
+  \def\@bv@tmp{#1}%
+  \ifx\@bv@tmp\@empty
+  \else
+    \@nodo@chapter{#1}%
+    \@bv@do{\protect\BRchapterstyle{#1}}%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@nodo@chapter}
+%\changes{1.14}{2011/01/19}{new}
+%    \begin{macrocode}
+\newcommand*{\@nodo@chapter}[1]{%
+  \ifnum\@bv@tmp<10\relax
+    \@bv@addtochidxsort{00#1:}%
+  \else
+    \ifnum\@bv@tmp<100\relax
+      \@bv@addtochidxsort{0#1:}%
+    \else
+      \@bv@addtochidxsort{#1:}%
+    \fi
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
 %\begin{macro}{\@br@vrsty}
 % Verses may be supplied as a range. Provide a command
 % to detect whether single number or range supplied.
@@ -1181,7 +1872,7 @@ defined}{}}}
 \ifx\@nil#2\relax
 \else
   \@bv@addtochidxsort{-}%
-  \@bv@do{\BRvrsep}%
+  \@bv@do{\protect\BRvrsep}%
   \@@br@vrsty#2\end%
 \fi
 }
@@ -1260,13 +1951,16 @@ defined}{}}}
 %    \end{macrocode}
 %\end{macro}
 %
-%\begin{macro}{\@@br@vrsty}
-% Pick up a list
+%\begin{macro}{\@do@verse}
+% Process individual verse
 %    \begin{macrocode}
-\def\@do@verses#1,#2\end{%
-\def\@br@tmp{#1}%
-\ifx\@br@tmp\@empty
-\else
+\newcommand*{\@do@verse}[1]{%
+  \@nodo@verse{#1}%
+  \expandafter\@bv@do\expandafter{\@br@tmp}%
+}
+%    \end{macrocode}
+%    \begin{macrocode}
+\newcommand*{\@nodo@verse}[1]{%
 %    \end{macrocode}
 % Strip suffix, if it exists.
 %    \begin{macrocode}
@@ -1283,17 +1977,59 @@ defined}{}}}
       \@bv@addtochidxsort{#1}%
     \fi
   \fi
-  \edef\@br@tmp{%
-     \noexpand\BRversestyle{\@br@versenum}%
-     \noexpand\BRversesuffixstyle{\@br@versesuffix}}%
-  \expandafter\@bv@do\expandafter{\@br@tmp}%
+  \ifx\@br@versesuffix\@empty
+    \protected@edef\@br@tmp{%
+       \protect\BRversestyle{\@br@versenum}%
+    }%
+  \else
+    \protected@edef\@br@tmp{%
+       \protect\BRversestyle{\@br@versenum}%
+       \protect\BRversesuffixstyle{\@br@versesuffix}%
+    }%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@do@verses}
+% Pick up a list
+%    \begin{macrocode}
+\def\@do@verses#1,#2\end{%
+\def\@br@tmp{#1}%
+\ifx\@br@tmp\@empty
+\else
+  \expandafter\@do@verse\expandafter{\@br@tmp}%
 \fi
 \ifx\relax#2\relax
 \else
   \@bv@addtochidxsort{,}%
-  \@bv@do{\BRvsep}%
+  \@bv@do{\protect\BRvsep}%
   \@do@verses#2\end
 \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@bv@category}
+%\changes{1.14}{2011/01/19}{new}
+% Stores the current bible ref category.
+%    \begin{macrocode}
+\newcommand*{\@bv@category}{}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\@bv@categorysort}
+%\changes{1.14}{2011/01/19}{new}
+% Stores the current bible ref category sort key.
+%    \begin{macrocode}
+\newcommand*{\@bv@categorysort}{}
+%    \end{macrocode}
+%\end{macro}
+%\begin{macro}{\biblerefcategory}
+% Sets the bible ref category and sort key.
+%    \begin{macrocode}
+\newcommand*{\biblerefcategory}[2][\@bv@category]{%
+  \renewcommand*{\@bv@category}{#2}%
+  \renewcommand*{\@bv@categorysort}{#1}%
 }
 %    \end{macrocode}
 %\end{macro}
@@ -1302,12 +2038,24 @@ defined}{}}}
 %\begin{definition}
 %\cs{bibleverse}\marg{name}
 %\end{definition}
+% Displays references using current style.
+%    \begin{macrocode}
+\newcommand*{\bibleverse}{%
+  \let\@bv@restore\relax
+  \@bible@verse
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\@bible@verse}
+%    \begin{macrocode}
+\newcommand*{\@bible@verse}[1]{%
+%    \end{macrocode}
 % This looks for a command called
 % \cs{br@}\meta{name} (defined earlier). 
 % After the book title, it then checks
 % to see if there is a bracket \verb|(| immediately following it.
 %    \begin{macrocode}
-\newcommand*{\bibleverse}[1]{%
   \@ifundefined{br@#1}%
   {%
     \PackageError{bibleref}{Unknown book '#1'}{}%
@@ -1316,13 +2064,30 @@ defined}{}}}
     \@bv@idxsort{\csname br@#1\endcsname}%
     \def\@bv@chidxsort{}%
     \BRbooktitlestyle{\csname br@#1\endcsname}%
+    \let\@bv@org@bookof\BRbookof
+    \let\@bv@org@booknumberstyle\BRbooknumberstyle
+    \let\@bv@org@epistletothe\BRepistletothe
+    \let\@bv@org@epistlenumberstyle\BRepistlenumberstyle
+    \def\BRbookof{\string\BRbookof\space}%
+    \def\BRbooknumberstyle{\string\BRbooknumberstyle\space}%
+    \def\BRepistletothe{\string\BRepistletothe\space}%
+    \def\BRepistlenumberstyle{\string\BRepistlenumberstyle\space}%
     \@ifundefined{bri@#1}%
     {%
-      \def\@bv@mainidxentry{\BRbooktitlestyle{\csname br@#1\endcsname}}%
+      \protected@edef\@bv@mainidxentry{%
+         \protect\BRbooktitlestyle{\csname br@#1\endcsname}}%
     }%
     {%
-      \def\@bv@mainidxentry{\BRbooktitlestyle{\csname bri@#1\endcsname}}%
+      \protected@edef\@bv@mainidxentry{%
+         \protect\BRbooktitlestyle{\csname bri@#1\endcsname}}%
     }%
+%    \end{macrocode}
+% Restore definitions.
+%    \begin{macrocode}
+    \let\BRbookof\@bv@org@bookof
+    \let\BRbooknumberstyle\@bv@org@booknumberstyle
+    \let\BRepistletothe\@bv@org@epistletothe
+    \let\BRepistlenumberstyle\@bv@org@epistlenumberstyle
   }%
 %    \end{macrocode}
 %\changes{1.13}{2010/07/07}{changed \cs{@ifnextchar} to
@@ -1339,24 +2104,12 @@ defined}{}}}
 % This gets the chapter number.
 %    \begin{macrocode}
 \def\@bibleverse(#1:{%
-  \def\@bv@tmp{#1}%
-  \ifx\@bv@tmp\@empty
-  \else
-    \ifnum\@bv@tmp<10\relax
-      \@bv@addtochidxsort{00#1:}%
-    \else
-      \ifnum\@bv@tmp<100\relax
-        \@bv@addtochidxsort{0#1:}%
-      \else
-        \@bv@addtochidxsort{#1:}%
-      \fi
-    \fi
-    \@bv@do{\BRchapterstyle{#1}}%
-  \fi
+  \@br@chsty{#1}%
   \@@bibleverse
 }
 %    \end{macrocode}
 %\end{macro}
+%
 %\begin{macro}{\@bibleverser}
 % This gets the second part of a range spanning chapters.
 %    \begin{macrocode}
@@ -1373,7 +2126,7 @@ defined}{}}}
         \@bv@addtochidxsort{#1:}%
       \fi
     \fi
-    \@bv@do{\BRchapterstyle{#1}}%
+    \@bv@do{\protect\BRchapterstyle{#1}}%
   \fi
   \@@bibleverse
 }
@@ -1389,16 +2142,16 @@ defined}{}}}
   \def\@bv@tmp{#1}%
   \ifx\@bv@tmp\@empty
   \else
-    \@bv@do{\BRchvsep}\@br@vrsty{#1}%
+    \@bv@do{\protect\BRchvsep}\@br@vrsty{#1}%
   \fi
 %    \end{macrocode}
 %\changes{1.13}{2010/07/07}{changed \cs{@ifnextchar} to
 %\cs{new@ifnextchar}}
 %    \begin{macrocode}
   \new@ifnextchar(%
-    {\@bv@do{\BRchsep}\@bibleverse}%
+    {\@bv@do{\protect\BRchsep}\@bibleverse}%
     {\new@ifnextchar-%
-       {\@bv@do{\BRvrsep}\@bibleverser}%
+       {\@bv@do{\protect\BRvrsep}\@bibleverser}%
        {\@end@@bibleverse}%
     }%
 }
@@ -1419,13 +2172,35 @@ defined}{}}}
   \else
     \def\@bv@tmp{\@bv@mainidxentry!\@bv@chidxsort @\@bv@idxentry}%
   \fi
-  \biblerefindex
-    {\@@bv@idxsort\relax @\@bv@tmp|\@bv@idxpgformat}%
+  \@do@biblerefindex
+      {\@@bv@idxsort\relax @\@bv@tmp|\@bv@idxpgformat}%
+%    \begin{macrocode}
   \@bv@idxfalse
 \fi
+%    \end{macrocode}
+%\changes{1.14}{2011/01/19}{added \cs{@bv@restore}}
+%    \begin{macrocode}
+\@bv@restore
 }
 %    \end{macrocode}
 %\end{macro}
+%
+%\begin{macro}{\@do@biblerefindex}
+% If category has been set prepend information to
+% \cs{@bv@mainidxentry}.
+%\changes{1.14}{2011/01/19}{new}
+%    \begin{macrocode}
+\newcommand*{\@do@biblerefindex}[1]{%
+  \ifx\@bv@category\@empty
+    \biblerefindex{#1}%
+  \else
+    \biblerefindex
+      {\@bv@categorysort @\@bv@category!#1}%
+  \fi
+}
+%    \end{macrocode}
+%\end{macro}
+%
 %\begin{macro}{\biblerefindex}
 % Allow user to modify index command in case multiple indices
 % are required.
@@ -1469,7 +2244,7 @@ defined}{}}}
 %    \begin{macrocode}
 \newtoks\@bv@tmpa
 \newtoks\@bv@tmpb
-\newcommand{\@bv@addtoidx}[1]{%
+\newcommand*{\@bv@addtoidx}[1]{%
 \if@bv@idx
   \@bv@tmpa={#1}%
   \@bv@tmpb=\expandafter{\@bv@idxentry}%
@@ -1517,7 +2292,7 @@ defined}{}}}
 %\begin{macro}{\ibibleverse}
 % This is like \cs{bibleverse},
 % but also adds an index entry. The optional argument indicates
-% how to format the page number (without the preceeding backslash)
+% how to format the page number (without the preceding backslash)
 % e.g. \verb|\ibibleref[textit]{Romans}|.
 %    \begin{macrocode}
 \newcommand*{\ibibleverse}[1][\bvidxpgformat]{%
@@ -1525,6 +2300,51 @@ defined}{}}}
 \@bv@idxtrue\def\@bv@idxentry{}\bibleverse}
 %    \end{macrocode}
 %\end{macro}
+%
+%\begin{macro}{\ibiblechvs}
+%\changes{1.14}{2011/01/19}{new}
+% Only displays chapter and verses but indexes under the book.
+%    \begin{macrocode}
+\newcommand*{\ibiblechvs}[1][\bvidxpgformat]{%
+  \let\@bv@current@bkchsep\BRbkchsep
+  \let\@bv@current@titlestyle\BRbooktitlestyle
+  \def\@bv@restore{%
+    \let\BRbkchsep\@bv@current@bkchsep
+    \let\BRbooktitlestyle\@bv@current@titlestyle
+  }%
+  \def\BRbkchsep{}%
+  \def\BRbooktitlestyle##1{}%
+  \def\@bv@idxpgformat{#1}%
+  \@bv@idxtrue\def\@bv@idxentry{}\@bible@verse
+}
+%    \end{macrocode}
+%\end{macro}
+%
+%\begin{macro}{\ibiblevs}
+%\changes{1.14}{2011/01/19}{new}
+% Only displays verse(s) but indexes under the book and chapters.
+%    \begin{macrocode}
+\newcommand*{\ibiblevs}[1][\bvidxpgformat]{%
+  \let\@bv@current@titlestyle\BRbooktitlestyle
+  \let\@bv@current@chapterstyle\BRchapterstyle
+  \let\@bv@current@bkchsep\BRbkchsep
+  \let\@bv@current@chvsep\BRchvsep
+  \def\@bv@restore{%
+    \let\BRbooktitlestyle\@bv@current@titlestyle
+    \let\BRchapterstyle\@bv@current@chapterstyle
+    \let\BRbkchsep\@bv@current@bkchsep
+    \let\BRchvsep\@bv@current@chvsep
+  }%
+  \def\BRbooktitlestyle##1{}%
+  \def\BRchapterstyle##1{}%
+  \def\BRbkchsep{}%
+  \def\BRchvsep{}%
+  \def\@bv@idxpgformat{#1}%
+  \@bv@idxtrue\def\@bv@idxentry{}\@bible@verse
+}
+%    \end{macrocode}
+%\end{macro}
+%
 %\begin{macro}{\bvidxpgformat}
 % Default page number format for bible verse index entries
 %    \begin{macrocode}
@@ -1538,287 +2358,63 @@ defined}{}}}
 %\fi
 %\iffalse
 %    \begin{macrocode}
-%<*bibleref-manual.tex>
+%<*sample-categories.tex>
 %    \end{macrocode}
 %\fi
 %\iffalse
-\documentclass{nlctdoc}
+%    \begin{macrocode}
+\documentclass{article}
 
+\usepackage{makeidx}
 \usepackage{bibleref}
-\usepackage[colorlinks,bookmarks,pdfauthor={Nicola L.C. Talbot},
-            hyperindex=false,
-            pdftitle={bibleref.sty: a LaTeX package for 
-            typesetting bible references}]{hyperref}
-
-\usepackage{creatdtx}
-
-\CheckSum{1893}
+\makeindex
 
 \begin{document}
-\title{bibleref.sty v1.13:
-a \LaTeXe\ package for typesetting bible references}
-\author{Nicola Talbot\\[10pt]
-School of Computing Sciences\\
-University of East Anglia\\
-Norwich. Norfolk. NR4 7TJ.\\
-United Kingdom\\
-\url{http://theoval.cmp.uea.ac.uk/~nlct/}}
-\date{2010-07-07}
+\biblerefcategory{NIV}
 
-\maketitle
-\tableofcontents
-
-\section{Introduction}
-
-The \sty{bibleref} package was designed to provide consistent formatting for referencing
-parts of the bible.
-
-\begin{definition}[\DescribeMacro{\bibleverse}]
-\cs{bibleverse}\marg{book title}\texttt(\meta{chapter}\texttt{:}\meta{verse(s)}\texttt)
-\end{definition}
-This command can be used to cite a bible book, chapter or verse 
-or range of chapters or verses.
-
-The book title, \meta{book title}, may be given either as the
-full title (e.g.\ \texttt{Matthew}) or as an abbreviation (e.g.\
-\texttt{Mt} or \texttt{Matt}), most standard abbreviations are
-recognised.  Books with multiple parts should be preceded by the
-book number in uppercase roman numerals. For example, the second
-book of Kings should be entered as \verb|\bibleverse{IIKings}|
-
-You may have any number, or zero, sets of parenthesis
-\verb|(|\meta{chapter}\texttt{:}\meta{verse(s)}\verb|)|,
-indicating the chapter and verse or verses. Verses can be
-specified as a comma separated list of individual verses or range
-of verses. A range of verses should be written with a single
-hyphen, e.g.\ \verb|2-4|. In the typeset output the verses will
-be separated with
-\begin{definition}[\DescribeMacro{\BRvsep}]
-\cs{BRvsep}
-\end{definition}
-(an en-dash by default.) A chapter may be referenced without a
-verse, but the colon must remain, e.g.\ \verb|(12:)| simply
-indicates chapter 12.
-
-A range of verses spanning more than one chapter can
-be entered as \texttt(\meta{ch}\texttt:\meta{v}\texttt{)-(}\meta
-{ch}\texttt:\meta{v}\texttt)
-
-Examples:
-\begin{center}
 \begin{tabular}{ll}
-\verb|\bibleverse{Ex}| & \bibleverse{Ex}\\
-\verb|\bibleverse{Exodus}(20:)| & \bibleverse{Exodus}(20:)\\
-\verb|\bibleverse{Exod}(20:17)| & \bibleverse{Exod}(20:17)\\
-\verb|\bibleverse{IICo}(12:21)| & \bibleverse{IICo}(12:21)\\
-\verb|\bibleverse{IICor}(12:21-32)| & \bibleverse{IICor}(12:21-32)\\
-\verb|\bibleverse{Ex}(20:17)(21:3)| & \bibleverse{Ex}(20:17)(21:3)\\
-\verb|\bibleverse{Ex}(15:)(17:)(20:)| & \bibleverse{Ex}(15:)(17:)(20:)\\
-\verb|\bibleverse{Rev}(1:2,5,7-9,11)| & \bibleverse{Rev}(1:2,5,7-9,11)\\
-\verb|\bibleverse{IChronicles}(1:3)-(2:7)| &
-\bibleverse{IChronicles}(1:3)-(2:7)
+\verb|\ibibleverse{Ex}| & \ibibleverse{Ex}\\
+\verb|\ibibleverse{Exodus}(20:)| & \ibibleverse{Exodus}(20:)\\
+\verb|\ibibleverse{Exod}(20:17)| & \ibibleverse{Exod}(20:17)\\
+\verb|\ibibleverse{IICo}(12:21)| & \ibibleverse{IICo}(12:21)\\
+\verb|\ibibleverse{IICor}(12:21-32)| & \ibibleverse{IICor}(12:21-32)\\
+\verb|\ibibleverse{Ex}(20:17)(21:3)| & \ibibleverse{Ex}(20:17)(21:3)\\
+\verb|\ibibleverse{Ex}(15:)(17:)(20:)| & \ibibleverse{Ex}(15:)(17:)(20:)\\
+\verb|\ibibleverse{Rev}(1:2,5,7-9,11)| & \ibibleverse{Rev}(1:2,5,7-9,11)\\
+\verb|\ibibleverse{IChronicles}(1:3)-(2:7)| &
+\ibibleverse{IChronicles}(1:3)-(2:7)\\
+\verb|\ibibleverse{IChronicles}(1:)-(4:)| &
+\ibibleverse{IChronicles}(1:)-(4:)\\
+\verb|\ibibleverse{IChronicles}(1-4:)| &
+\ibibleverse{IChronicles}(1-4:)
 \end{tabular}
-\end{center}
 
-The style of the reference can be specified either by 
-package option or as the argument to the command
-\begin{definition}[\DescribeMacro{\biblerefstyle}]
-\cs{biblerefstyle}\marg{style}
-\end{definition}
-Styles are listed in Table~\ref{tab:styles}.
+\biblerefcategory{Jerusalem}
 
-\begin{table}[tbh]
-\caption{Bible Citation Styles (can be used as package option or in the argument to 
-\cs{biblerefstyle})}
-\label{tab:styles}
-\vspace{10pt}
-\begin{center}
-\begin{tabular}{lp{0.5\textwidth}}
-\bfseries Style & \bfseries Example\\
-default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5)\\
-jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5)\\
-anglosaxon & \biblerefstyle{anglosaxon}\bibleverse{IICor}(12:1-5)\\
-JEH & \biblerefstyle{JEH}\bibleverse{IICor}(12:1-5)\\
-NTG & \biblerefstyle{NTG}\bibleverse{IICor}(12:1-5)\\
-MLA & \biblerefstyle{MLA}\bibleverse{IICor}(12:1-5)\\
-chicago & \biblerefstyle{chicago}\bibleverse{IICor}(12:1-5)\\
-text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5)
+\begin{tabular}{ll}
+\verb|\ibibleverse{Ex}| & \ibibleverse{Ex}\\
+\verb|\ibibleverse{Exodus}(20:)| & \ibibleverse{Exodus}(20:)\\
+\verb|\ibibleverse{Exod}(20:17)| & \ibibleverse{Exod}(20:17)\\
+\verb|\ibibleverse{IICo}(12:21)| & \ibibleverse{IICo}(12:21)\\
+\verb|\ibibleverse{IICor}(12:21-32)| & \ibibleverse{IICor}(12:21-32)\\
+\verb|\ibibleverse{Ex}(20:17)(21:3)| & \ibibleverse{Ex}(20:17)(21:3)\\
+\verb|\ibibleverse{Ex}(15:)(17:)(20:)| & \ibibleverse{Ex}(15:)(17:)(20:)\\
+\verb|\ibibleverse{Rev}(1:2,5,7-9,11)| & \ibibleverse{Rev}(1:2,5,7-9,11)\\
+\verb|\ibibleverse{IChronicles}(1:3)-(2:7)| &
+\ibibleverse{IChronicles}(1:3)-(2:7)\\
+\verb|\ibibleverse{IChronicles}(1:)-(4:)| &
+\ibibleverse{IChronicles}(1:)-(4:)\\
+\verb|\ibibleverse{IChronicles}(1-4:)| &
+\ibibleverse{IChronicles}(1-4:)
 \end{tabular}
-\end{center}
-\end{table}
 
-You can change the name of a book using 
-\begin{definition}[\DescribeMacro{\setbooktitle}]
-\cs{setbooktitle}\marg{name}\marg{new title}
-\end{definition}
-Note that \meta{name} must be the full name, not the
-abbreviated name of the book. For example, to change
-Revelation to Apoc, do 
-\verb|\setbookname{Revelation}{Apoc}|
-(\textbf{Note} that you shouldn't do 
-\verb|\setbookname{Rev}{Apoc}|)
-
-If you want a different title for a book depending on whether it's
-in the main body of the document or in the index, you can set the
-index version using:
-\begin{definition}[\DescribeMacro{\setindexbooktitle}]
-\cs{setindexbooktitle}\marg{name}\marg{title}
-\end{definition}
-In this case, \meta{name} should be the name you'll use in 
-\cs{ibibleverse}. For example, if you do:
-\begin{verbatim}
-\setbooktitle{Psalms}{Psalm}
-\setindexbooktitle{Psalms}{Psalms}
-\end{verbatim}
-Then \verb|\ibibleverse{Psalms}(2:)| will print Psalm the
-document and Psalms in the index, but \verb|\ibibleverse{Ps}(2:)|
-will print Psalms in both the document and the index.
-
-You can add a book using
-\begin{definition}[\DescribeMacro{\addbiblebook}]
-\cs{addbiblebook}\marg{name}\marg{title}
-\end{definition}
-For example:
-\begin{verbatim}
-\addbiblebook{Susanna}{Story of Susanna}
-\end{verbatim}
-
-\section{Defining New Styles}
-
-You can define a new style using the command
-\begin{definition}[\DescribeMacro{\newbiblerefstyle}]
-\cs{newbiblerefstyle}\marg{style-name}\marg{commands}
-\end{definition}\noindent
-where \meta{commands} are
-the commands needed to modify the citation style.
-
-Example: 
-This new style is based on the \qt{default} style, but
-has verses in lower case Roman numerals, and redefines
-\qt{Revelation} as \qt{Apocalypse}.
-\begin{verbatim}
-\newbiblerefstyle{sample}{%
-\biblerefstyle{default}%
-\renewcommand{\BRversestyle}[1]{\romannumeral##1}%
-\setbooktitle{Revelation}{Apocalypse}%
-}
-\end{verbatim}
-Note the use of \verb|##1| instead of \verb|#1|.
-
-\section{Indexing Bible References}
-
-\begin{definition}[\DescribeMacro{\ibibleverse}]
-\cs{ibibleverse}\marg{book title}\texttt(\marg{chapter}\texttt{:}\meta{verse(s)}\texttt)
-\end{definition}
-This does the same as \cs{bibleverse}
-but also adds an index entry (provided you have used 
-\cs{makeindex} in the preamble.) The default page number 
-format is given by the command 
-\begin{definition}[\DescribeMacro{\bvidxpgformat}]
-\cs{bvidxpgformat}
-\end{definition}
-This is \texttt{textrm} by default, but can be redefined. To 
-override the page number format for a particular entry you can
-use the optional argument to \cs{ibibleverse}. For example:
-\begin{verbatim}
-\ibibleverse[textit]{Exodus}
-\end{verbatim}
-(Note there is no backslash.)
-
-You may need to create your own custom \app{makeindex} style file
-as the default uses a comma and space to separate the item from
-the page number, which may cause confusion. For example, you
-could create a file called \texttt{sample.ist} and write in the
-lines:
-\begin{verbatim}
-delim_0 "\\dotfill "
-delim_1 "\\dotfill "
-delim_2 "\\dotfill "
-\end{verbatim}
-See the \app{makeindex} documentation for further details.
-
-\subsection{Separate Scripture Index}
-
-If you want a separate index for bible verses, in addition to
-a general index, you can redefine
-\begin{definition}[\DescribeMacro{\biblerefindex}]
-\cs{biblerefindex}
-\end{definition}
-This command defaults to \cs{index}, but can be changed to
-the appropriate indexing command. For example, suppose you
-are using the \sty{multind} package and you want a general
-index and a scripture index, you can do something like:
-\begin{verbatim}
-\documentclass{article}
-\usepackage{bibleref}
-\usepackage{multind}
-
-\makeindex{scripture}
-\makeindex{general}
-
-\renewcommand{\biblerefindex}{\index{scripture}}
-\end{verbatim}
-In the document, you can use \cs{ibibleverse} as before, and
-the scripture index is displayed using
-\begin{verbatim}
-\printindex{scripture}{Scripture Index}
-\end{verbatim}
-You will then need to run \app{makeindex} on the file
-\texttt{scripture.idx}. See the \sty{multind} documentation
-for further details.
-
-\subsection{Changing the Sort Order}
-
-The bible reference entries will be sorted alphabetically by
-\app{makeindex}. However you may prefer the entries to be sorted
-according to their order in the bible. This can either be done
-using \app{xindy} instead of \app{makeindex} and creating your
-own custom alphabet (see \app{xindy} manual for details) or you
-can use \sty{bibleref}'s mapping command.
-
-\begin{definition}[\DescribeMacro{\biblerefmap}]
-\cs{biblerefmap}\marg{label}\marg{new sort key}
-\end{definition}
-For example, in the preamble:
-\begin{verbatim}
-\biblerefmap{Genesis}{01}
-\biblerefmap{Exodus}{02}
-\biblerefmap{Leviticus}{03}
-\biblerefmap{Numbers}{04}
-\biblerefmap{Deuteronomy}{05}
-...
-\end{verbatim}
-When you run \app{makeindex}, the references will now be sorted
-in numerical order.
-
-If you want to subdivide the index into, say, old and new 
-testament, you can add this to the mapping. For example:
-\begin{verbatim}
-\biblerefmap{Genesis}{1@Old Testament!01}
-\biblerefmap{Exodus}{1@Old Testament!02}
-\biblerefmap{Leviticus}{1@Old Testament!03}
-\biblerefmap{Numbers}{1@Old Testament!04}
-\biblerefmap{Deuteronomy}{1@Old Testament!05}
-...
-\biblerefmap{Matthew}{2@New Testament!01}
-\biblerefmap{Mark}{2@New Testament!02}
-...
-\end{verbatim}
-
-\section{Acknowledgements}
-Many thanks to all the useful comments from comp.text.tex, 
-especially from Jesse~Billett, Brooks~Moses and Ulrich~M.~Schwarz.
-
-\StopEventually{\phantomsection
-\addcontentsline{toc}{section}{Index}
-\PrintIndex
-}
-
+\printindex
 \end{document}
+%    \end{macrocode}
 %\fi
 %\iffalse
 %    \begin{macrocode}
-%</bibleref-manual.tex>
+%</sample-categories.tex>
 %    \end{macrocode}
 %\fi
 %\iffalse
@@ -1876,6 +2472,53 @@ Another new testament reference \ibibleverse{Matt}.
 %\iffalse
 %    \begin{macrocode}
 %</sample-multind.tex>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+%<*sample-xidx.tex>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%\subsection{Sample document using bibleref-xidx}
+%    \begin{macrocode}
+\documentclass{article}
+
+\usepackage{bibleref-xidx}
+\usepackage{makeidx}
+\makeindex
+
+\biblerefstyle{MHRA}
+
+\begin{document}
+\title{Sample Document Using bibleref-xidx}
+\author{Nicola Talbot}
+\maketitle
+
+\begin{tabular}{ll}
+\verb|\ibibleverse{Ex}| & \ibibleverse{Ex}\\
+\verb|\ibibleverse{Exodus}(20:)| & \ibibleverse{Exodus}(20:)\\
+\verb|\ibibleverse{Exod}(20:17)| & \ibibleverse{Exod}(20:17)\\
+\verb|\ibibleverse{IICo}(12:21)| & \ibibleverse{IICo}(12:21)\\
+\verb|\ibibleverse{IICor}(12:21-32)| & \ibibleverse{IICor}(12:21-32)\\
+\verb|\ibibleverse{Ex}(20:17)(21:3)| & \ibibleverse{Ex}(20:17)(21:3)\\
+\verb|\ibibleverse{Ex}(15:)(17:)(20:)| & \ibibleverse{Ex}(15:)(17:)(20:)\\
+\verb|\ibibleverse{Rev}(1:2,5,7-9,11)| & \ibibleverse{Rev}(1:2,5,7-9,11)\\
+\verb|\ibibleverse{IChronicles}(1:3)-(2:7)| &
+\ibibleverse{IChronicles}(1:3)-(2:7)\\
+\verb|\ibibleverse{IChronicles}(1:)-(4:)| &
+\ibibleverse{IChronicles}(1:)-(4:)\\
+\verb|\ibibleverse{IChronicles}(1-4:)| &
+\ibibleverse{IChronicles}(1-4:)
+\end{tabular}
+
+\printindex
+\end{document}
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+%</sample-xidx.tex>
 %    \end{macrocode}
 %\fi
 %\iffalse
@@ -2068,6 +2711,26 @@ the numbers into words.
 \bibleverse{IChronicles}(1:3)-(2:7)
 \end{itemize}
 
+\section{MHRA Style---Indexed}
+
+\biblerefstyle{MHRA}
+\noindent
+\begin{tabular}{ll}
+\verb|\ibibleverse{Ex}| & \ibibleverse{Ex}\\
+\verb|\ibibleverse{Exodus}(9:)| & \ibibleverse{Exodus}(9:)\\
+\verb|\ibibleverse{Exod}(20:17)| & \ibibleverse{Exod}(20:17)\\
+\verb|\ibibleverse{Exod}(20:)| & \ibibleverse{Exod}(20:)\\
+\verb|\ibibleverse{IICo}(12:21)| & \ibibleverse{IICo}(12:21)\\
+\verb|\ibibleverse{IICor}(12:21-32)| & \ibibleverse{IICor}(12:21-32)\\
+\verb|\ibibleverse{Ex}(20:17)(21:3)| & \ibibleverse{Ex}(20:17)(21:3)\\
+\verb|\ibibleverse{Ex}(15:)(17:)(20:)| & \ibibleverse{Ex}(15:)(17:)(20:)\\
+\verb|\ibibleverse{Rev}(1:2,5,7-9,11)| & \ibibleverse{Rev}(1:2,5,7-9,11)\\
+\verb|\ibibleverse{IChronicles}(1:3)-(2:7)| &
+\ibibleverse{IChronicles}(1:3)-(2:7)\\
+\verb|\ibibleverse{IIPeter}(3:8-15a)| &
+\ibibleverse{IIPeter}(3:8-15a)
+\end{tabular}
+
 \section{New Style}
 
 This new style is based on the `default' style, but
@@ -2102,25 +2765,19 @@ has verses in lower case Roman numerals, and redefines
 \bibleverse{IChronicles}(1:3)-(2:7)
 \end{tabular}
 
-\section{MHRA Style---Indexed}
+\section{Partial References}
 
-\biblerefstyle{MHRA}
-\noindent
-\begin{tabular}{ll}
-\verb|\ibibleverse{Ex}| & \ibibleverse{Ex}\\
-\verb|\ibibleverse{Exodus}(9:)| & \ibibleverse{Exodus}(9:)\\
-\verb|\ibibleverse{Exod}(20:17)| & \ibibleverse{Exod}(20:17)\\
-\verb|\ibibleverse{Exod}(20:)| & \ibibleverse{Exod}(20:)\\
-\verb|\ibibleverse{IICo}(12:21)| & \ibibleverse{IICo}(12:21)\\
-\verb|\ibibleverse{IICor}(12:21-32)| & \ibibleverse{IICor}(12:21-32)\\
-\verb|\ibibleverse{Ex}(20:17)(21:3)| & \ibibleverse{Ex}(20:17)(21:3)\\
-\verb|\ibibleverse{Ex}(15:)(17:)(20:)| & \ibibleverse{Ex}(15:)(17:)(20:)\\
-\verb|\ibibleverse{Rev}(1:2,5,7-9,11)| & \ibibleverse{Rev}(1:2,5,7-9,11)\\
-\verb|\ibibleverse{IChronicles}(1:3)-(2:7)| &
-\ibibleverse{IChronicles}(1:3)-(2:7)\\
-\verb|\ibibleverse{IIPeter}(3:8-15a)| &
-\ibibleverse{IIPeter}(3:8-15a)
-\end{tabular}
+Only display verse numbers, but index under book and chapter:
+\ibiblevs{Gen}(19:3-4).
+
+Display only chapter and verses, but index under book:
+\ibiblechvs{Gen}(4:1-5).
+
+Complete indexed reference: \ibibleverse{Gen}(20:1-4).
+
+Display chapter range with no verses: \ibibleverse{Gen}(1,4-6,8-9,11:).
+
+Display chapter range with no verses (no index): \bibleverse{John}(1,3,4-6,8:).
 
 \printindex
 
@@ -2130,6 +2787,23 @@ has verses in lower case Roman numerals, and redefines
 %\iffalse
 %    \begin{macrocode}
 %</sample.tex>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+%<*sample.ist>
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+delim_0	"\\dotfill "
+delim_1	"\\dotfill "
+delim_2	"\\dotfill "
+%    \end{macrocode}
+%\fi
+%\iffalse
+%    \begin{macrocode}
+%</sample.ist>
 %    \end{macrocode}
 %\fi
 %\iffalse

@@ -1,0 +1,1210 @@
+<a 
+ id="top"></a><?xml version="1.0" encoding="iso-8859-1" ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<!--http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd-->  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+> 
+<head><title>bibleref.sty v1.14: a LaTeX2&#x03B5;package for typesetting bible references</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)" /> 
+<meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)" /> 
+<!-- xhtml,fn-in,css-in --> 
+<meta name="src" content="bibleref-manual.tex" /> 
+<meta name="date" content="2011-01-19 22:37:00" /> 
+ 
+<style type="text/css"> 
+<!--  
+ 
+/* start css.sty */  
+.cmmi-10{font-style: italic;}  
+.cmr-17{font-size:170%;}  
+.cmr-12{font-size:120%;}  
+.cmmi-12x-x-144{font-size:172%;font-style: italic;}  
+.cmr-8{font-size:80%;}  
+.cmtt-12{font-size:120%;font-family: monospace;}  
+.cmtt-12{font-family: monospace;}  
+.cmtt-12{font-family: monospace;}  
+.cmtt-10{font-family: monospace;}  
+.cmtt-10{font-family: monospace;}  
+.cmtt-10{font-family: monospace;}  
+.cmss-10{ font-family: sans-serif;}  
+.cmss-10{ font-family: sans-serif;}  
+.cmtt-9{font-size:90%;font-family: monospace;}  
+.cmtt-9{font-family: monospace;}  
+.cmtt-9{font-family: monospace;}  
+.cmti-10{ font-style: italic;}  
+.cmbx-10{ font-weight: bold;}  
+.cmssbx-10{ font-family: sans-serif; font-weight: bold;}  
+.cmssbx-10{ font-family: sans-serif; font-weight: bold;}  
+.cmr-9{font-size:90%;}  
+p.noindent { text-indent: 0em }  
+td p.noindent { text-indent: 0em; margin-top:0em; }  
+p.nopar { text-indent: 0em; }  
+p.indent{ text-indent: 1.5em }  
+@media print {div.crosslinks {visibility:hidden;}}  
+a img { border-top: 0; border-left: 0; border-right: 0; }  
+center { margin-top:1em; margin-bottom:1em; }  
+td center { margin-top:0em; margin-bottom:0em; }  
+.Canvas { position:relative; }  
+img.math{vertical-align:middle;}  
+li p.indent { text-indent: 0em }  
+li p:first-child{ margin-top:0em; }  
+li p:last-child, li div:last-child { margin-bottom:0.5em; }  
+li p~ul:last-child, li p~ol:last-child{ margin-bottom:0.5em; }  
+.enumerate1 {list-style-type:decimal;}  
+.enumerate2 {list-style-type:lower-alpha;}  
+.enumerate3 {list-style-type:lower-roman;}  
+.enumerate4 {list-style-type:upper-alpha;}  
+div.newtheorem { margin-bottom: 2em; margin-top: 2em;}  
+.obeylines-h,.obeylines-v {white-space: nowrap; }  
+div.obeylines-v p { margin-top:0; margin-bottom:0; }  
+.overline{ text-decoration:overline; }  
+.overline img{ border-top: 1px solid black; }  
+td.displaylines {text-align:center; white-space:nowrap;}  
+.centerline {text-align:center;}  
+.rightline {text-align:right;}  
+div.verbatim {font-family: monospace; white-space: nowrap; text-align:left; clear:both; }  
+.fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }  
+div.fbox {display:table}  
+div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }  
+div.minipage{width:100%;}  
+div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}  
+div.center div {text-align: left;}  
+div.flushright, div.flushright div.flushright {text-align: right;}  
+div.flushright div {text-align: left;}  
+div.flushleft {text-align: left;}  
+.underline{ text-decoration:underline; }  
+.underline img{ border-bottom: 1px solid black; margin-bottom:1pt; }  
+.framebox-c, .framebox-l, .framebox-r { padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }  
+.framebox-c {text-align:center;}  
+.framebox-l {text-align:left;}  
+.framebox-r {text-align:right;}  
+span.thank-mark{ vertical-align: super }  
+span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }  
+div.footnotes{border-top:solid 1px black; border-bottom:solid 1px black; padding-bottom:1ex; padding-top:0.5ex; margin-right:15%; margin-top:2ex; font-style:italic; font-size:85%;}  
+div.footnotes p{margin-top:0; margin-bottom:0; text-indent:0;}  
+div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }  
+table.tabular td p{margin-top:0em;}  
+table.tabular {margin-left: auto; margin-right: auto;}  
+td p:first-child{ margin-top:0em; }  
+td p:last-child{ margin-bottom:0em; }  
+div.td00{ margin-left:0pt; margin-right:0pt; }  
+div.td01{ margin-left:0pt; margin-right:5pt; }  
+div.td10{ margin-left:5pt; margin-right:0pt; }  
+div.td11{ margin-left:5pt; margin-right:5pt; }  
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }  
+td.td00{ padding-left:0pt; padding-right:0pt; }  
+td.td01{ padding-left:0pt; padding-right:5pt; }  
+td.td10{ padding-left:5pt; padding-right:0pt; }  
+td.td11{ padding-left:5pt; padding-right:5pt; }  
+table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }  
+.hline hr, .cline hr{ height : 1px; margin:0px; }  
+.tabbing-right {text-align:right;}  
+span.TEX {letter-spacing: -0.125em; }  
+span.TEX span.E{ position:relative;top:0.5ex;left:-0.0417em;}  
+a span.TEX span.E {text-decoration: none; }  
+span.LATEX span.A{ position:relative; top:-0.5ex; left:-0.4em; font-size:85%;}  
+span.LATEX span.TEX{ position:relative; left: -0.4em; }  
+div.float, div.figure {margin-left: auto; margin-right: auto;}  
+div.float img {text-align:center;}  
+div.figure img {text-align:center;}  
+.marginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}  
+.marginpar p{margin-top:0.4em; margin-bottom:0.4em;}  
+table.equation {width:100%;}  
+.equation td{text-align:center; }  
+td.equation { margin-top:1em; margin-bottom:1em; }  
+td.equation-label { width:5%; text-align:center; }  
+td.eqnarray4 { width:5%; white-space: normal; }  
+td.eqnarray2 { width:5%; }  
+table.eqnarray-star, table.eqnarray {width:100%;}  
+div.eqnarray{text-align:center;}  
+div.array {text-align:center;}  
+div.pmatrix {text-align:center;}  
+table.pmatrix {width:100%;}  
+span.pmatrix img{vertical-align:middle;}  
+div.pmatrix {text-align:center;}  
+table.pmatrix {width:100%;}  
+span.bar-css {text-decoration:overline;}  
+img.cdots{vertical-align:middle;}  
+.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}  
+.index-item, .index-subitem, .index-subsubitem {display:block}  
+div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}  
+div.caption span.id{font-weight: bold; white-space: nowrap; }  
+h1.partHead{text-align: center}  
+p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }  
+p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }  
+.paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}  
+.subparagraphHead, .likesubparagraphHead { font-weight: bold;}  
+.quote {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; margin-right:1em; text-align:justify;}  
+.verse{white-space:nowrap; margin-left:2em}  
+div.maketitle {text-align:center;}  
+h2.titleHead{text-align:center;}  
+div.maketitle{ margin-bottom: 2em; }  
+div.author, div.date {text-align:center;}  
+div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }  
+.quotation {margin-bottom:0.25em; margin-top:0.25em; margin-left:1em; }  
+.abstract p {margin-left:5%; margin-right:5%;}  
+div.abstract {width:100%;}  
+table.multicols { width:100%; margin-left:1em; margin-top:1em; margin-bottom:1em; }  
+div.important { background-color:red; }  
+/* end css.sty */  
+ 
+ 
+--> 
+</style> 
+</head><body 
+>
+   <div class="maketitle">
+                                                                    
+
+                                                                    
+                                                                    
+
+                                                                    
+
+<h2 class="titleHead">bibleref.sty v1.14: a <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>2&#x03B5;&#x00A0;package for
+typesetting bible references</h2>
+              <div class="author" ><span 
+class="cmr-12">Nicola Talbot</span>
+<br />      <span 
+class="cmr-12">School of Computing Sciences</span>
+<br />        <span 
+class="cmr-12">University of East Anglia</span>
+<br />       <span 
+class="cmr-12">Norwich. Norfolk. NR4 7TJ.</span>
+<br />            <span 
+class="cmr-12">United Kingdom</span>
+<br /><a 
+href="http://theoval.cmp.uea.ac.uk/~nlct/" class="url" ><span 
+class="cmtt-12">http://theoval.cmp.uea.ac.uk/~nlct/</span></a></div><br />
+<div class="date" ><span 
+class="cmr-12">2011-01-19</span></div>
+   </div>
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>Contents</h3>
+   <div class="tableofcontents">
+   <span class="sectionToc" >1 <a 
+href="#x1-20001" id="QQ2-1-2">Introduction</a></span>
+<br />   <span class="sectionToc" >2 <a 
+href="#x1-30002" id="QQ2-1-4">Defining New Styles</a></span>
+<br />   <span class="sectionToc" >3 <a 
+href="#x1-40003" id="QQ2-1-5">Indexing Bible References</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.1 <a 
+href="#x1-50003.1" id="QQ2-1-6">Index Categories</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.2 <a 
+href="#x1-60003.2" id="QQ2-1-7">The <span 
+class="cmss-10">bibleref-xidx </span>Package</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.3 <a 
+href="#x1-70003.3" id="QQ2-1-8">Separate Scripture Index</a></span>
+<br />   &#x00A0;<span class="subsectionToc" >3.4 <a 
+href="#x1-80003.4" id="QQ2-1-9">Changing the Sort Order</a></span>
+<br />   <span class="sectionToc" >4 <a 
+href="#x1-90004" id="QQ2-1-10">Distributing New Styles</a></span>
+<br />   <span class="sectionToc" >5 <a 
+href="#x1-100005" id="QQ2-1-11">Acknowledgements</a></span>
+<br />   <span class="sectionToc" ><a 
+href="#Q1-1-12">Index</a></span>
+   </div>
+<!--l. 28--><p class="noindent" >
+</p>
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-20001"></a>Introduction</h3>
+<!--l. 30--><p class="noindent" >The <span 
+class="cmss-10">bibleref</span><a 
+ id="dx1-2001"></a> package was designed to provide consistent formatting for referencing parts
+of the bible.
+                                                                    
+
+                                                                    
+</p><!--l. 33--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\bibleverse</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-2002"></a> <span 
+class="cmtt-10">\bibleverse{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">book title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}(</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">chapter</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">:</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">verse(s)</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">) </span></div><hr>
+</p><!--l. 35--><p class="noindent" >
+This command can be used to cite a bible book, chapter or verse or range of chapters or
+verses.
+</p><!--l. 39--><p class="indent" >   <div class="important" title="Important Note"> Be careful if you use <span 
+class="cmss-10">bibleref</span><a 
+ id="dx1-2003"></a> with <span 
+class="cmss-10">babel</span><a 
+ id="dx1-2004"></a> as some of <span 
+class="cmss-10">babel</span>&#8217;s language options make
+the colon character active, which will cause a problem for <span 
+class="cmtt-10">\bibleverse </span>(and
+<span 
+class="cmtt-10">\ibibleverse</span><a 
+ id="dx1-2005"></a>, described later). Check the <span 
+class="cmss-10">babel </span>documentation to find out how to
+make the colon non-active. </div>
+</p><!--l. 45--><p class="noindent" >
+</p><!--l. 47--><p class="indent" >   The book title, <span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">book title</span><span 
+class="cmsy-10">&#x27E9;</span>, may be given either as the full title (e.g.&#x00A0;<span 
+class="cmtt-10">Matthew</span>) or as
+an abbreviation (e.g.&#x00A0;<span 
+class="cmtt-10">Mt </span>or <span 
+class="cmtt-10">Matt</span>), most standard abbreviations are recognised. Books
+with multiple parts should be preceded by the book number in uppercase
+Roman numerals. For example, the second book of Kings should be entered as
+<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{IIKings}</span></span></span>
+</p><!--l. 54--><p class="indent" >   You may have any number, or zero, sets of parenthesis <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(</span></span></span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">chapter</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">:</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">verse(s)</span><span 
+class="cmsy-10">&#x27E9;</span><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">)</span></span></span>,
+indicating the chapter and verse or verses. Verses can be specified as a comma separated
+list of individual verses or range of verses. A range of verses should be written with a
+single hyphen, e.g.&#x00A0;<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">2-4</span></span></span>. In the typeset output the verses will be separated
+with
+</p><!--l. 61--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\BRvsep</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-2006"></a> <span 
+class="cmtt-10">\BRvsep </span></div><hr>
+</p><!--l. 63--><p class="noindent" >
+(an en-dash by default.) A chapter may be referenced without a verse, but the colon
+must remain, e.g.&#x00A0;<span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(12:)</span></span></span> simply indicates chapter 12.
+</p><!--l. 68--><p class="indent" >   A range of verses spanning more than one chapter can be entered as
+<span 
+class="cmtt-10">(</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">ch</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">:</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">v</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">)-(</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">ch</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">:</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">v</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">)</span>
+</p><!--l. 72--><p class="indent" >   If there is no verse, but there are multiple chapters or chapter ranges, these may be
+specified in the <span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">chapter</span><span 
+class="cmsy-10">&#x27E9; </span>part, using a comma to separate individual chapters and a
+hyphen to separate ranges. Note that you still need a colon at the end of the
+list.
+</p><!--l. 77--><p class="indent" >   Examples: </p>
+<div class="center" 
+>
+<!--l. 78--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-2" class="tabular" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-2-1g"><col 
+id="TBL-2-1" /><col 
+id="TBL-2-2" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-2-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{Ex}</span></span></span>                   </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-1-2"  
+class="td11">Exodus                    </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{Exodus}(20:)</span></span></span>           </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-2-2"  
+class="td11">Exodus 20                </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{Exod}(20:17)</span></span></span>           </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-3-2"  
+class="td11">Exodus 20:17             </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-4-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{IICo}(12:21)</span></span></span>           </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-4-2"  
+class="td11">2 Corinthians 12:21     </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-5-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{IICor}(12:21-32)</span></span></span>       </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-5-2"  
+class="td11">2 Corinthians 12:21&#8211;32</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-6-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{Ex}(20:17)(21:3)</span></span></span>       </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-6-2"  
+class="td11">Exodus 20:17;21:3      </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-7-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{Ex}(15:)(17:)(20:)</span></span></span>     </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-7-2"  
+class="td11">Exodus 15;17;20         </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-8-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{Rev}(1:2,5,7-9,11)</span></span></span>     </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-8-2"  
+class="td11">Revelation 1:2,5,7&#8211;9,11</td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-9-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{IChronicles}(1:3)-(2:7)</span></span></span></td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-9-2"  
+class="td11">1 Chronicles 1:3&#8211;2:7    </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-2-10-"><td  style="white-space:nowrap; text-align:left;" id="TBL-2-10-1"  
+class="td11"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse{Luke}(1,4-5,8:)</span></span></span>        </td><td  style="white-space:nowrap; text-align:left;" id="TBL-2-10-2"  
+class="td11">Luke 1,4&#8211;5,8              </td></tr></table>
+</div></div>
+<!--l. 94--><p class="indent" >   The style of the reference can be specified either by package option or as the
+argument to the command
+                                                                    
+
+                                                                    
+</p><!--l. 96--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\biblerefstyle</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-2007"></a> <span 
+class="cmtt-10">\biblerefstyle{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">style</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">} </span></div><hr>
+</p><!--l. 98--><p class="noindent" >
+Styles are listed in Table&#x00A0;<a 
+href="#x1-20081">1<!--tex4ht:ref: tab:styles --></a>.
+</p>
+   <div class="table">
+                                                                    
+
+                                                                    
+<!--l. 101--><p class="indent" >   <a 
+ id="x1-20081"></a></p><hr class="float" /><div class="float" 
+>
+                                                                    
+
+                                                                    
+ <div class="caption" 
+><span class="id">Table&#x00A0;1: </span><span  
+class="content">Bible Citation Styles (can be used as package option or in the argument
+to <span 
+class="cmtt-10">\biblerefstyle</span>)</span></div><!--tex4ht:label?: x1-20081 -->
+<div class="center" 
+>
+<!--l. 106--><p class="noindent" >
+</p>
+<div class="tabular"> <table id="TBL-3" class="tabular" 
+cellspacing="0" cellpadding="0"  
+><colgroup id="TBL-3-1g"><col 
+id="TBL-3-1" /><col 
+id="TBL-3-2" /></colgroup><tr  
+ style="vertical-align:baseline;" id="TBL-3-1-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-1-1"  
+class="td11"><span 
+class="cmbx-10">Style     </span></td><td  style="white-space:wrap; text-align:left;" id="TBL-3-1-2"  
+class="td11"><!--l. 108--><p class="noindent" ><span 
+class="cmbx-10">Example</span>                                   </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-2-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-2-1"  
+class="td11">default     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-2-2"  
+class="td11"><!--l. 109--><p class="noindent" >2 Corinthians 12:1&#8211;5                          </p></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-3-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-3-1"  
+class="td11">jerusalem </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-3-2"  
+class="td11"><!--l. 110--><p class="noindent" >2 Co 12:1&#8211;5</p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-4-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-4-1"  
+class="td11">anglosaxon</td><td  style="white-space:wrap; text-align:left;" id="TBL-3-4-2"  
+class="td11"><!--l. 111--><p class="noindent" >II Cor. XII.1&#8211;5                                 </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-5-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-5-1"  
+class="td11">JEH         </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-5-2"  
+class="td11"><!--l. 112--><p class="noindent" >2 Cor. xii. 1&#8211;5                                  </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-6-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-6-1"  
+class="td11">NTG        </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-6-2"  
+class="td11"><!--l. 113--><p class="noindent" >2 Cor xii,1&#8211;5                                    </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-7-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-7-1"  
+class="td11">MLA        </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-7-2"  
+class="td11"><!--l. 114--><p class="noindent" >2 Cor.&#x00A0;xii.1&#8211;5                                   </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-8-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-8-1"  
+class="td11">chicago     </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-8-2"  
+class="td11"><!--l. 115--><p class="noindent" >2 Cor.&#x00A0;xii : 1&#8211;5                                  </p></td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-3-9-"><td  style="white-space:nowrap; text-align:left;" id="TBL-3-9-1"  
+class="td11">text         </td><td  style="white-space:wrap; text-align:left;" id="TBL-3-9-2"  
+class="td11"><!--l. 116--><p class="noindent" >Second&#x00A0;Epistle   to   the   Corinthians,
+chapter twelve verse one to five            </p></td>
+</tr></table></div></div>
+                                                                    
+
+                                                                    
+   </div><hr class="endfloat" />
+   </div>
+<!--l. 121--><p class="indent" >   You can change the name of a book using
+</p><!--l. 122--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\setbooktitle</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-2009"></a> <span 
+class="cmtt-10">\setbooktitle{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">new title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">} </span></div><hr>
+</p><!--l. 124--><p class="noindent" >
+Note that <span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&#x27E9; </span>must be the full name, not the abbreviated name of the book. For
+example, to change Revelation to Apoc, do <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\setbookname{Revelation}{Apoc}</span></span></span> (<span 
+class="cmbx-10">Note</span>
+that you shouldn&#8217;t do <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\setbookname{Rev}{Apoc}</span></span></span>)
+</p><!--l. 132--><p class="indent" >   If you want a different title for a book depending on whether it&#8217;s in the
+main body of the document or in the index, you can set the index version
+using:
+</p><!--l. 135--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\setindexbooktitle</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-2010"></a> <span 
+class="cmtt-10">\setindexbooktitle{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">} </span></div><hr>
+</p><!--l. 137--><p class="noindent" >
+In this case, <span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&#x27E9; </span>should be the name you&#8217;ll use in <span 
+class="cmtt-10">\ibibleverse</span>. For example, if
+you do:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-1">
+\setbooktitle{Psalms}{Psalm}
+&#x00A0;<br />\setindexbooktitle{Psalms}{Psalms}
+</div>
+<!--l. 143--><p class="nopar" > Then <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\ibibleverse{Psalms}(2:)</span></span></span> will print Psalm the document and Psalms in the
+index, but <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\ibibleverse{Ps}(2:)</span></span></span> will print Psalms in both the document and the
+index.
+</p><!--l. 148--><p class="indent" >   You can add a book using
+</p><!--l. 149--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\addbiblebook</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-2011"></a> <span 
+class="cmtt-10">\addbiblebook{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">name</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">} </span></div><hr>
+</p><!--l. 151--><p class="noindent" >
+For example:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-2">
+\addbiblebook{Susanna}{Story&#x00A0;of&#x00A0;Susanna}
+</div>
+<!--l. 155--><p class="nopar" >
+</p>
+<!--l. 157--><p class="noindent" ><a 
+href="#top">Top</a></p><h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-30002"></a>Defining New Styles</h3>
+<!--l. 159--><p class="noindent" >You can define a new style using the command
+</p><!--l. 160--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\newbiblerefstyle</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-3001"></a> <span 
+class="cmtt-10">\newbiblerefstyle{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">style-name</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">commands</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}</span>
+</div><hr>
+</p><!--l. 162--><p class="noindent" >
+where <span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">commands</span><span 
+class="cmsy-10">&#x27E9; </span>are the commands needed to modify the citation style.
+</p><!--l. 166--><p class="indent" >   Example: This new style is based on the &#8220;default&#8221; style, but has verses in lower case
+Roman numerals, and redefines &#8220;Revelation&#8221; as &#8220;Apocalypse&#8221;.
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-3">
+\newbiblerefstyle{sample}{%
+&#x00A0;<br />\biblerefstyle{default}%
+&#x00A0;<br />\renewcommand{\BRversestyle}[1]{\romannumeral##1}%
+&#x00A0;<br />\setbooktitle{Revelation}{Apocalypse}%
+&#x00A0;<br />}
+</div>
+<!--l. 176--><p class="nopar" > Note the use of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">##1</span></span></span> instead of <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">#1</span></span></span>.
+</p><!--l. 179--><p class="indent" >   If you want to distribute a new style, see section&#x00A0;<a 
+href="#x1-90004">4<!--tex4ht:ref: sec:distnewstyles --></a>.
+</p><!--l. 182--><p class="noindent" >
+</p>
+<!--l. 182--><p class="noindent" ><a 
+href="#top">Top</a></p><h3 class="sectionHead"><span class="titlemark">3   </span> <a 
+ id="x1-40003"></a>Indexing Bible References</h3>
+<!--l. 184--><p class="noindent" ><hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\ibibleverse</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-4001"></a> <span 
+class="cmtt-10">\ibibleverse[</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">format</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">book title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}({</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">chapter</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}:</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">verse(s)</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">)</span>
+</div><hr>
+</p><!--l. 186--><p class="noindent" >
+This does the same as <span 
+class="cmtt-10">\bibleverse </span>but also adds an index entry (provided you have
+used <span 
+class="cmtt-10">\makeindex </span>in the preamble.) The default page number format is given by the
+command
+</p><!--l. 191--><p class="noindent" ><hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\bvidxpgformat</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-4002"></a> <span 
+class="cmtt-10">\bvidxpgformat </span></div><hr>
+</p><!--l. 193--><p class="noindent" >
+This is <span 
+class="cmtt-10">textrm </span>by default, but can be redefined. To override the page number format for
+a particular entry you can use the optional argument to <span 
+class="cmtt-10">\ibibleverse</span>. For
+example:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-4">
+\ibibleverse[textit]{Exodus}
+</div>
+<!--l. 199--><p class="nopar" > (Note there is no backslash.)
+</p><!--l. 202--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\ibiblechvs</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-4003"></a> <span 
+class="cmtt-10">\ibiblechvs[</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">format</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">book title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}({</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">chapter</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}:</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">verse(s)</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">)</span>
+</div><hr>
+</p><!--l. 204--><p class="noindent" >
+This is similar to <span 
+class="cmtt-10">\ibibleverse </span>except that it doesn&#8217;t display the book name in
+the text. The reference is indexed under the book title in the same way as
+<span 
+class="cmtt-10">\ibibleverse</span>.
+</p><!--l. 209--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\ibiblevs</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-4004"></a> <span 
+class="cmtt-10">\ibiblevs[</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">format</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">book title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}({</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">chapter</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}:</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">verse(s)</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">)</span>
+</div><hr>
+</p><!--l. 211--><p class="noindent" >
+This is similar to <span 
+class="cmtt-10">\ibiblechvs </span>except that it only displays the verse(s) in the
+text.
+</p><!--l. 215--><p class="indent" >   You may need to create your own custom <span 
+class="cmtt-10">makeindex</span><a 
+ id="dx1-4005"></a> style file as the default uses a
+comma and space to separate the item from the page number, which may cause
+confusion. For example, you could create a file called <span 
+class="cmtt-10">sample.ist </span>and write in the
+lines:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-5">
+delim_0&#x00A0;"\\dotfill&#x00A0;"
+&#x00A0;<br />delim_1&#x00A0;"\\dotfill&#x00A0;"
+&#x00A0;<br />delim_2&#x00A0;"\\dotfill&#x00A0;"
+</div>
+<!--l. 224--><p class="nopar" > See the <span 
+class="cmtt-10">makeindex</span><a 
+ id="dx1-4006"></a> documentation for further details.
+</p><!--l. 227--><p class="noindent" >
+</p>
+<!--l. 227--><p class="noindent" ><a 
+href="#top">Top</a></p><h4 class="subsectionHead"><span class="titlemark">3.1   </span> <a 
+ id="x1-50003.1"></a>Index Categories</h4>
+<!--l. 229--><p class="noindent" >You may prefer to index the bible reference under a category with the book title as a
+sub item of that category. This can be achieved using:
+</p><!--l. 232--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\biblerefcategory</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-5001"></a> <span 
+class="cmtt-10">\biblerefcategory[</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">sort key</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">]{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">category title</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">} </span></div><hr>
+</p><!--l. 234--><p class="noindent" >
+The optional argument is the sort key to be used by <span 
+class="cmtt-10">makeindex</span><a 
+ id="dx1-5002"></a> or <span 
+class="cmtt-10">xindy</span><a 
+ id="dx1-5003"></a>. If omitted
+<span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">category title</span><span 
+class="cmsy-10">&#x27E9; </span>is used.
+</p><!--l. 239--><p class="indent" >   Note that <span 
+class="cmtt-10">\ibibleverse</span><a 
+ id="dx1-5004"></a>, <span 
+class="cmtt-10">\ibiblechvs</span><a 
+ id="dx1-5005"></a> and <span 
+class="cmtt-10">\ibiblevs</span><a 
+ id="dx1-5006"></a> use the category that is
+currently set. If you need to keep switching categories, you may find it easier to define a
+shortcut command. For example, suppose you&#8217;re discussing the differences
+between the King James and the New Jerusalem versions, you could define the
+following:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-6">
+\newcommand{\kjref}{\biblerefcategory{King&#x00A0;James}\ibibleverse}
+&#x00A0;<br />\newcommand{\njref}{\biblerefcategory{New&#x00A0;Jerusalem}\ibibleverse}
+</div>
+<!--l. 248--><p class="nopar" > You can now use <span 
+class="cmtt-10">\kjref </span>and <span 
+class="cmtt-10">\njref </span>in the same way that you would use
+<span 
+class="cmtt-10">\ibibleverse</span>
+</p><!--l. 252--><p class="indent" >   You can disable the category by setting it to nothing:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-7">
+\biblerefcategory{}
+</div>
+<!--l. 255--><p class="nopar" >
+</p><!--l. 257--><p class="noindent" >
+</p>
+<!--l. 257--><p class="noindent" ><a 
+href="#top">Top</a></p><h4 class="subsectionHead"><span class="titlemark">3.2   </span> <a 
+ id="x1-60003.2"></a>The <span 
+class="cmss-10">bibleref-xidx </span>Package</h4>
+<!--l. 259--><p class="noindent" >The <span 
+class="cmss-10">bibleref</span><a 
+ id="dx1-6001"></a> package comes with a supplementary package <span 
+class="cmss-10">bibleref-xidx</span><a 
+ id="dx1-6002"></a> that modifies the
+way bible references are added to the index. With no package options, i.e.,
+just
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-8">
+\usepackage{bibleref-xidx}
+</div>
+<!--l. 264--><p class="nopar" > the verses will appear as sub-items of the chapters. Note that a verse range will be
+considered a single item so, for example,
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-9">
+\ibibleverse{Ex}(9:1)
+&#x00A0;<br />\ibibleverse{Ex}(9:4)
+&#x00A0;<br />\ibibleverse{Ex}(9:1-4)
+</div>
+<!--l. 271--><p class="nopar" > will occur as three separate entries under Exodus chapter&#x00A0;9. Also note that <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(9-14:)</span></span></span>
+and <span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">(9:)-(14:)</span></span></span> will be treated differently.
+</p><!--l. 276--><p class="indent" >   The <span 
+class="cmss-10">bibleref-xidx</span><a 
+ id="dx1-6003"></a> package can be loaded with the following options:
+     </p><dl class="description"><dt class="description">
+<span 
+class="cmssbx-10">noverses</span><a 
+ id="dx1-6004"></a> </dt><dd 
+class="description">Don&#8217;t show the verses in the index.
+     </dd><dt class="description">
+<span 
+class="cmssbx-10">verses</span><a 
+ id="dx1-6005"></a> </dt><dd 
+class="description">Show the verses (and chapters) in the index (default).
+     </dd><dt class="description">
+<span 
+class="cmssbx-10">nochapters</span><a 
+ id="dx1-6006"></a> </dt><dd 
+class="description">Don&#8217;t show the chapters (and verses) in the index.
+     </dd><dt class="description">
+<span 
+class="cmssbx-10">chapters</span><a 
+ id="dx1-6007"></a> </dt><dd 
+class="description">Show the chapters in the index (default).</dd></dl>
+<!--l. 285--><p class="noindent" >All other package options will be passed to the <span 
+class="cmss-10">bibleref</span><a 
+ id="dx1-6008"></a> package, which <span 
+class="cmss-10">bibleref-xidx</span><a 
+ id="dx1-6009"></a>
+automatically loads.
+</p><!--l. 288--><p class="noindent" >
+</p>
+<!--l. 288--><p class="noindent" ><a 
+href="#top">Top</a></p><h4 class="subsectionHead"><span class="titlemark">3.3   </span> <a 
+ id="x1-70003.3"></a>Separate Scripture Index</h4>
+<!--l. 290--><p class="noindent" >If you want a separate index for bible verses, in addition to a general index, you can
+redefine
+</p><!--l. 292--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\biblerefindex</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-7001"></a> <span 
+class="cmtt-10">\biblerefindex </span></div><hr>
+</p><!--l. 294--><p class="noindent" >
+This command defaults to <span 
+class="cmtt-10">\index</span>, but can be changed to the appropriate
+indexing command. For example, suppose you are using the <span 
+class="cmss-10">multind</span><a 
+ id="dx1-7002"></a> package
+and you want a general index and a scripture index, you can do something
+like:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-10">
+\documentclass{article}
+&#x00A0;<br />\usepackage{bibleref}
+&#x00A0;<br />\usepackage{multind}
+&#x00A0;<br />\makeindex{scripture}
+&#x00A0;<br />\makeindex{general}
+&#x00A0;<br />\renewcommand{\biblerefindex}{\index{scripture}}
+</div>
+<!--l. 308--><p class="nopar" > In the document, you can use <span 
+class="cmtt-10">\ibibleverse </span>as before, and the scripture index is
+displayed using
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-11">
+\printindex{scripture}{Scripture&#x00A0;Index}
+</div>
+<!--l. 313--><p class="nopar" > You will then need to run <span 
+class="cmtt-10">makeindex</span><a 
+ id="dx1-7003"></a> on the file <span 
+class="cmtt-10">scripture.idx</span>. See the <span 
+class="cmss-10">multind</span><a 
+ id="dx1-7004"></a>
+documentation for further details.
+</p><!--l. 318--><p class="noindent" >
+</p>
+<!--l. 318--><p class="noindent" ><a 
+href="#top">Top</a></p><h4 class="subsectionHead"><span class="titlemark">3.4   </span> <a 
+ id="x1-80003.4"></a>Changing the Sort Order</h4>
+<!--l. 320--><p class="noindent" >The bible reference entries will be sorted alphabetically by <span 
+class="cmtt-10">makeindex</span><a 
+ id="dx1-8001"></a>. However you
+may prefer the entries to be sorted according to their order in the bible. This can either
+be done using <span 
+class="cmtt-10">xindy</span><a 
+ id="dx1-8002"></a> instead of <span 
+class="cmtt-10">makeindex</span><a 
+ id="dx1-8003"></a> and creating your own custom
+alphabet (see <span 
+class="cmtt-10">xindy</span><a 
+ id="dx1-8004"></a> manual for details) or you can use <span 
+class="cmss-10">bibleref</span><a 
+ id="dx1-8005"></a>&#8217;s mapping
+command.
+</p><!--l. 327--><p class="indent" >   <hr><div title="Definition"><span class="marginpar"><span 
+class="cmtt-9">\biblerefmap</span><span 
+class="cmtt-9">&#x00A0;</span></span><a 
+ id="dx1-8006"></a> <span 
+class="cmtt-10">\biblerefmap{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">label</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">}{</span><span 
+class="cmsy-10">&#x27E8;</span><span 
+class="cmti-10">new sort key</span><span 
+class="cmsy-10">&#x27E9;</span><span 
+class="cmtt-10">} </span></div><hr>
+</p><!--l. 329--><p class="noindent" >
+For example, in the preamble:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-12">
+\biblerefmap{Genesis}{01}
+&#x00A0;<br />\biblerefmap{Exodus}{02}
+&#x00A0;<br />\biblerefmap{Leviticus}{03}
+&#x00A0;<br />\biblerefmap{Numbers}{04}
+&#x00A0;<br />\biblerefmap{Deuteronomy}{05}
+&#x00A0;<br />...
+</div>
+<!--l. 338--><p class="nopar" > When you run <span 
+class="cmtt-10">makeindex</span><a 
+ id="dx1-8007"></a>, the references will now be sorted in numerical
+order.
+</p><!--l. 342--><p class="indent" >   If you want to subdivide the index into, say, old and new testament, you can add
+this to the mapping. For example:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-13">
+\biblerefmap{Genesis}{1@Old&#x00A0;Testament!01}
+&#x00A0;<br />\biblerefmap{Exodus}{1@Old&#x00A0;Testament!02}
+&#x00A0;<br />\biblerefmap{Leviticus}{1@Old&#x00A0;Testament!03}
+&#x00A0;<br />\biblerefmap{Numbers}{1@Old&#x00A0;Testament!04}
+&#x00A0;<br />\biblerefmap{Deuteronomy}{1@Old&#x00A0;Testament!05}
+&#x00A0;<br />...
+&#x00A0;<br />\biblerefmap{Matthew}{2@New&#x00A0;Testament!01}
+&#x00A0;<br />\biblerefmap{Mark}{2@New&#x00A0;Testament!02}
+&#x00A0;<br />...
+</div>
+<!--l. 354--><p class="nopar" >
+</p><!--l. 356--><p class="noindent" >
+</p>
+<!--l. 356--><p class="noindent" ><a 
+href="#top">Top</a></p><h3 class="sectionHead"><span class="titlemark">4   </span> <a 
+ id="x1-90004"></a>Distributing New Styles</h3>
+<!--l. 359--><p class="noindent" >If you want a new bible reference style (or translation) publicly available, then it&#8217;s a
+good idea to upload it to CTAN (<a 
+href="www.ctan.org" class="url" ><span 
+class="cmtt-10">www.ctan.org</span></a>). If you&#8217;ve never done this before, you
+might find it a bit daunting, so here are a few pointers.
+</p><!--l. 364--><p class="indent" >   I suggest that you give the name of your new package the prefix <span 
+class="cmtt-10">bibleref- </span>as then it will
+appear close to <span 
+class="cmss-10">bibleref</span><a 
+ id="dx1-9001"></a> in the alphabetical list in the catalogue. Suppose your new style is called
+&#8220;mystyle&#8221;<span class="footnote-mark"><a 
+href="#fn1x0" id="fn1x0-bk"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x1-9002f1"></a>,
+then create a file called <span 
+class="cmtt-10">bibleref-mystyle.sty</span>. At the start of the file, do:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-14">
+\NeedsTeXFormat{LaTeX2e}
+&#x00A0;<br />\ProvidesPackage{bibleref-mystyle}[2011/01/19&#x00A0;v1.0&#x00A0;Bible&#x00A0;reference
+&#x00A0;<br />style&#x00A0;conforming&#x00A0;to&#x00A0;something&#x00A0;or&#x00A0;other]
+</div>
+<!--l. 374--><p class="nopar" > (Change the date and the brief description in the line above to something more
+appropriate.) Next you need to load <span 
+class="cmss-10">bibleref</span><a 
+ id="dx1-9003"></a>:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-15">
+\RequirePackage{bibleref}
+</div>
+<!--l. 379--><p class="nopar" > Now do the new style stuff (or redefine styles to provide translations):
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-16">
+\newbiblerefstyle{mystyle}{%
+&#x00A0;<br />\biblerefstyle{default}%
+&#x00A0;<br />\renewcommand{\BRversestyle}[1]{\romannumeral##1}%
+&#x00A0;<br />\setbooktitle{Revelation}{Apocalypse}%
+&#x00A0;<br />}
+</div>
+<!--l. 388--><p class="nopar" > (Again change the above to whatever is appropriate.) Put any new book definitions
+that your style may require, for example:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-17">
+\addbiblebook{Susanna}{Story&#x00A0;of&#x00A0;Susanna}
+</div>
+<!--l. 393--><p class="nopar" > and add any <span 
+class="cmtt-10">\biblerefmap </span>commands that are required. Then set your new style as
+the current style, if appropriate:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-18">
+\biblerefstyle{mystyle}
+</div>
+<!--l. 398--><p class="nopar" > On the last line of the file add:
+                                                                    
+
+                                                                    
+</p>
+   <div class="verbatim" id="verbatim-19">
+\endinput
+</div>
+<!--l. 402--><p class="nopar" >
+</p><!--l. 404--><p class="indent" >   Next you need to create a file called &#8220;README&#8221; that contains some information
+about your new package, including what license you want to distribute it under. (If you
+don&#8217;t know anything about licenses, I recommend you choose the <span class="LATEX">L<span class="A">A</span><span class="TEX">T<span 
+class="E">E</span>X</span></span>&#x00A0;Project
+Public License, LPPL.)
+</p><!--l. 409--><p class="indent" >   It&#8217;s worth adding a sample file or a little bit of documentation that illustrates how
+the references appear.
+</p><!--l. 412--><p class="indent" >   Put your .sty file, README file and samples or documentation into a zip archive.
+You&#8217;re now ready to upload it. There are several upload pages. The main one is at
+<a 
+href="http://www.ctan.org/upload.html" class="url" ><span 
+class="cmtt-10">http://www.ctan.org/upload.html</span></a>. The name of your contribution is the name of
+your package (&#8220;bibleref-mystyle&#8221; in this example). Remember to put your name and
+email in the relevant input boxes. Sometime after you&#8217;ve uploaded your zip file,
+you&#8217;ll get a copy of the announcement from one of the CTAN maintainers. It
+usually takes a day to establish itself. After that people can download and use
+it.
+</p><!--l. 422--><p class="noindent" >
+</p>
+<!--l. 422--><p class="noindent" ><a 
+href="#top">Top</a></p><h3 class="sectionHead"><span class="titlemark">5   </span> <a 
+ id="x1-100005"></a>Acknowledgements</h3>
+<!--l. 423--><p class="noindent" >Many thanks to all the useful comments from comp.text.tex, especially from
+Jesse&#x00A0;Billett, Brooks&#x00A0;Moses and Ulrich&#x00A0;M.&#x00A0;Schwarz.
+                                                                    
+
+                                                                    
+</p><!--l. 429--><p class="indent" >   <a 
+ id="likesection.1"></a><a 
+ id="Q1-1-12"></a>
+</p>
+<!--l. 2--><p class="noindent" ><a 
+href="#top">Top</a></p><h3 class="likesectionHead"><a 
+ id="x1-110005"></a>Index</h3>
+<!--l. 4--><p class="noindent" >                                                                  <span 
+class="cmbx-10">A</span>
+</p>
+   <div class="theindex"><span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\addbiblebook</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2011" ><span 
+class="cmti-10">1</span></a> <br /></span>
+<p class="theindex">                                                                  <span 
+class="cmbx-10">B</span>
+<span class="index-item"><span 
+class="cmss-10">babel </span>package&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2004" >2</a> <br /></span>
+<span class="index-item"><span 
+class="cmss-10">bibleref </span>package&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2001" >3</a>, <a 
+href="bibleref-manual.html#dx1-2003" >4</a>, <a 
+href="bibleref-manual.html#dx1-6001" >5</a>, <a 
+href="bibleref-manual.html#dx1-6008" >6</a>, <a 
+href="bibleref-manual.html#dx1-8005" >7</a>, <a 
+href="bibleref-manual.html#dx1-9001" >8</a>, <a 
+href="bibleref-manual.html#dx1-9003" >9</a> <br /></span>
+<span class="index-item"><span 
+class="cmss-10">bibleref-xidx </span>package&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#x1-60003.2" >10</a>, <a 
+href="bibleref-manual.html#dx1-6002" >11</a>, <a 
+href="bibleref-manual.html#dx1-6003" >12</a>, <a 
+href="bibleref-manual.html#dx1-6009" >13</a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\biblerefcategory</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-5001" ><span 
+class="cmti-10">14</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\biblerefindex</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-7001" ><span 
+class="cmti-10">15</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\biblerefmap</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-8006" ><span 
+class="cmti-10">16</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\biblerefstyle</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2007" ><span 
+class="cmti-10">17</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bibleverse</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2002" ><span 
+class="cmti-10">18</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\BRvsep</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2006" ><span 
+class="cmti-10">19</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\bvidxpgformat</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-4002" ><span 
+class="cmti-10">20</span></a> <br /></span>
+</p><p class="theindex">                                                                   <span 
+class="cmbx-10">I</span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\ibiblechvs</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-4003" ><span 
+class="cmti-10">21</span></a>, <a 
+href="bibleref-manual.html#dx1-5005" ><span class="underline">22</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\ibibleverse</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2005" ><span class="underline">23</span></a>, <a 
+href="bibleref-manual.html#dx1-4001" ><span 
+class="cmti-10">24</span></a>, <a 
+href="bibleref-manual.html#dx1-5004" ><span class="underline">25</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\ibiblevs</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-4004" ><span 
+class="cmti-10">26</span></a>, <a 
+href="bibleref-manual.html#dx1-5006" ><span class="underline">27</span></a> <br /></span>
+</p><p class="theindex">                                                                  <span 
+class="cmbx-10">M</span>
+<span class="index-item"><span 
+class="cmtt-10">makeindex</span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-4005" >28</a>, <a 
+href="bibleref-manual.html#dx1-4006" >29</a>, <a 
+href="bibleref-manual.html#dx1-5002" >30</a>, <a 
+href="bibleref-manual.html#dx1-7003" >31</a>, <a 
+href="bibleref-manual.html#dx1-8001" >32</a>, <a 
+href="bibleref-manual.html#dx1-8003" >33</a>, <a 
+href="bibleref-manual.html#dx1-8007" >34</a> <br /></span>
+<span class="index-item"><span 
+class="cmss-10">multind </span>package&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-7002" >35</a>, <a 
+href="bibleref-manual.html#dx1-7004" >36</a> <br /></span>
+</p><p class="theindex">                                                                  <span 
+class="cmbx-10">N</span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\newbiblerefstyle</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-3001" ><span 
+class="cmti-10">37</span></a> <br /></span>
+</p><p class="theindex">                                                                  <span 
+class="cmbx-10">P</span>
+<span class="index-item">package options:<br /></span>
+<span class="index-subitem">&#x00A0;&#x00A0;&#x00A0;&#x00A0;<span 
+class="cmss-10">chapters</span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-6007" ><span class="underline">38</span></a> <br /></span>
+<span class="index-subitem">&#x00A0;&#x00A0;&#x00A0;&#x00A0;<span 
+class="cmss-10">nochapters</span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-6006" ><span class="underline">39</span></a> <br /></span>
+<span class="index-subitem">&#x00A0;&#x00A0;&#x00A0;&#x00A0;<span 
+class="cmss-10">noverses</span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-6004" ><span class="underline">40</span></a> <br /></span>
+<span class="index-subitem">&#x00A0;&#x00A0;&#x00A0;&#x00A0;<span 
+class="cmss-10">verses</span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-6005" ><span class="underline">41</span></a> <br /></span>
+                                                                    
+
+                                                                    
+</p><p class="theindex">                                                                  <span 
+class="cmbx-10">S</span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\setbooktitle</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2009" ><span 
+class="cmti-10">42</span></a> <br /></span>
+<span class="index-item"><span class="obeylines-h"><span class="verb"><span 
+class="cmtt-10">\setindexbooktitle</span></span></span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-2010" ><span 
+class="cmti-10">43</span></a> <br /></span>
+</p><p class="theindex">                                                                  <span 
+class="cmbx-10">X</span>
+<span class="index-item"><span 
+class="cmtt-10">xindy</span>&#x00A0;&#x00A0;<a 
+href="bibleref-manual.html#dx1-5003" >44</a>, <a 
+href="bibleref-manual.html#dx1-8002" >45</a>, <a 
+href="bibleref-manual.html#dx1-8004" >46</a> <br /></span>
+</p></div>
+   <div class="footnotes"><!--l. 367--><p class="indent" >    <span class="footnote-mark"><a 
+href="#fn1x0-bk" id="fn1x0"><sup class="textsuperscript">1</sup></a></span><span 
+class="cmr-8">Choose a more descriptive name than this.</span></p>                                                          </div>
+ 
+</body></html> 
+
+                                                                    
+
+

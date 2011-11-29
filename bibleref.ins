@@ -1,10 +1,10 @@
-% bibleref.ins generated using makedtx version 0.94b 2010/7/7 10:21
+% bibleref.ins generated using makedtx version 0.94b 2011/1/19 22:37
 \input docstrip
 
 \preamble
 
  bibleref.dtx
- Copyright 2010 Nicola Talbot
+ Copyright 2011 Nicola Talbot
 
  This work may be distributed and/or modified under the
  conditions of the LaTeX Project Public License, either version 1.3
@@ -18,20 +18,26 @@
 
  The Current Maintainer of this work is Nicola Talbot.
 
- This work consists of the files bibleref.dtx and bibleref.ins and the derived files bibleref.sty, bibleref-manual.tex, sample-multind.tex, sample.tex, bibleref.perl.
+ This work consists of the files bibleref.dtx and bibleref.ins and the derived files bibleref-xidx.sty, bibleref.sty, sample-categories.tex, sample-multind.tex, sample-xidx.tex, sample.tex, sample.ist, bibleref.perl.
 
 \endpreamble
 
 \askforoverwritefalse
 
-\generate{\file{bibleref.sty}{\usepreamble\defaultpreamble
+\generate{\file{bibleref-xidx.sty}{\usepreamble\defaultpreamble
+\usepostamble\defaultpostamble\from{bibleref.dtx}{bibleref-xidx.sty,package}}
+\file{bibleref.sty}{\usepreamble\defaultpreamble
 \usepostamble\defaultpostamble\from{bibleref.dtx}{bibleref.sty,package}}
-\file{bibleref-manual.tex}{\usepreamble\defaultpreamble
-\usepostamble\defaultpostamble\from{bibleref.dtx}{bibleref-manual.tex,package}}
+\file{sample-categories.tex}{\usepreamble\defaultpreamble
+\usepostamble\defaultpostamble\from{bibleref.dtx}{sample-categories.tex,package}}
 \file{sample-multind.tex}{\usepreamble\defaultpreamble
 \usepostamble\defaultpostamble\from{bibleref.dtx}{sample-multind.tex,package}}
+\file{sample-xidx.tex}{\usepreamble\defaultpreamble
+\usepostamble\defaultpostamble\from{bibleref.dtx}{sample-xidx.tex,package}}
 \file{sample.tex}{\usepreamble\defaultpreamble
 \usepostamble\defaultpostamble\from{bibleref.dtx}{sample.tex,package}}
+\file{sample.ist}{\usepreamble\defaultpreamble
+\usepostamble\defaultpostamble\from{bibleref.dtx}{sample.ist,package}}
 \file{bibleref.perl}{\nopreamble\nopostamble\from{bibleref.dtx}{bibleref.perl}}
 }
 
