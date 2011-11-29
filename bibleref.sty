@@ -5,10 +5,10 @@
 %% The original source files were:
 %%
 %% bibleref.dtx  (with options: `bibleref.sty,package')
-%% 
+%%
 %%  bibleref.dtx
 %%  Copyright 2010 Nicola Talbot
-%% 
+%%
 %%  This work may be distributed and/or modified under the
 %%  conditions of the LaTeX Project Public License, either version 1.3
 %%  of this license of (at your option) any later version.
@@ -16,13 +16,13 @@
 %%    http://www.latex-project.org/lppl.txt
 %%  and version 1.3 or later is part of all distributions of LaTeX
 %%  version 2005/12/01 or later.
-%% 
+%%
 %%  This work has the LPPL maintenance status `maintained'.
-%% 
+%%
 %%  The Current Maintainer of this work is Nicola Talbot.
-%% 
+%%
 %%  This work consists of the files bibleref.dtx and bibleref.ins and the derived files bibleref.sty, bibleref-manual.tex, sample-multind.tex, sample.tex, bibleref.perl.
-%% 
+%%
 %% \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -39,7 +39,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{bibleref}[2010/07/07 1.13 (NLCT)]
+\ProvidesPackage{bibleref}[2010/08/30 unofficial (Carlo Stemberger)]
 \RequirePackage{ifthen}
 \RequirePackage{fmtcount}
 \RequirePackage{amsgen}
@@ -283,6 +283,80 @@
 \def\br@IIIJohn{\BRepistlenumberstyle{3}John}%
 \def\br@Jude{Jude}%
 \def\br@Revelation{Rev\BRperiod}}
+\newcommand*{\brceiabbrvname}{%
+\def\br@Genesis{Gen\BRperiod}% or "Gn" ??????
+\def\br@Exodus{Es\BRperiod}%
+\def\br@Leviticus{Lv\BRperiod}%
+\def\br@Numbers{Nm\BRperiod}%
+\def\br@Deuteronomy{Dt\BRperiod}%
+\def\br@Joshua{Gs\BRperiod}%
+\def\br@Judges{Gdc\BRperiod}%
+\def\br@Ruth{Rt\BRperiod}%
+\def\br@ISamuel{\BRbooknumberstyle{1}Sm\BRperiod}%
+\def\br@IISamuel{\BRbooknumberstyle{2}Sm\BRperiod}%
+\def\br@IKings{\BRbooknumberstyle{1}Re\BRperiod}%
+\def\br@IIKings{\BRbooknumberstyle{2}Re\BRperiod}%
+\def\br@IChronicles{\BRbooknumberstyle{1}Cr\BRperiod}%
+\def\br@IIChronicles{\BRbooknumberstyle{2}Cr\BRperiod}%
+\def\br@Ezra{Esd\BRperiod}%
+\def\br@Nehemiah{Ne\BRperiod}%
+\def\br@Tobit{Tb\BRperiod}%
+\def\br@Judith{Gdt\BRperiod}%
+\def\br@Esther{Est\BRperiod}%
+\def\br@IMaccabees{\BRbooknumberstyle{1}Mc\BRperiod}%
+\def\br@IIMaccabees{\BRbooknumberstyle{2}Mc\BRperiod}%
+\def\br@Job{Gb\BRperiod}%
+\def\br@Psalms{Sal\BRperiod}%
+\def\br@Proverbs{Prv\BRperiod}%
+\def\br@Ecclesiastes{Qo\BRperiod}%
+\def\br@SongofSongs{Cn\BRperiod}%
+\def\br@Wisdom{Sp\BRperiod}%
+\def\br@Ecclesiasticus{Sir\BRperiod}%
+\def\br@Isaiah{Is\BRperiod}%
+\def\br@Jeremiah{Gr\BRperiod}% or "Ger" ??????
+\def\br@Lamentations{Lm\BRperiod}%
+\def\br@Baruch{Ba\BRperiod}%
+\def\br@Ezekiel{Ez\BRperiod}%
+\def\br@Daniel{Dn\BRperiod}%
+\def\br@Hosea{Os\BRperiod}%
+\def\br@Joel{Gl\BRperiod}%
+\def\br@Amos{Am\BRperiod}%
+\def\br@Obadiah{Abd\BRperiod}%
+\def\br@Jonah{Gi\BRperiod}% or "Gn" ??????
+\def\br@Micah{Mic\BRperiod}%
+\def\br@Nahum{Nh\BRperiod}%
+\def\br@Habakkuk{Ab\BRperiod}%
+\def\br@Zephaniah{Sof\BRperiod}%
+\def\br@Haggai{Ag\BRperiod}%
+\def\br@Zechariah{Zc\BRperiod}%
+\def\br@Malachi{Ml\BRperiod}%
+\def\br@Matthew{Mt\BRperiod}%
+\def\br@Mark{Mc\BRperiod}%
+\def\br@Luke{Lc\BRperiod}%
+\def\br@John{Gv\BRperiod}%
+\def\br@Acts{At\BRperiod}%
+\def\br@Romans{Rm\BRperiod}%
+\def\br@ICorinthians{\BRepistlenumberstyle{1}Cor\BRperiod}%
+\def\br@IICorinthians{\BRepistlenumberstyle{2}Cor\BRperiod}%
+\def\br@Galatians{Gal\BRperiod}%
+\def\br@Ephesians{Ef\BRperiod}%
+\def\br@Philippians{Fl\BRperiod}%
+\def\br@Colossians{Col\BRperiod}%
+\def\br@IThessalonians{\BRepistlenumberstyle{1}Ts\BRperiod}%
+\def\br@IIThessalonians{\BRepistlenumberstyle{2}Ts\BRperiod}%
+\def\br@ITimothy{\BRepistlenumberstyle{1}Tm\BRperiod}%
+\def\br@IITimothy{\BRepistlenumberstyle{2}Tm\BRperiod}%
+\def\br@Titus{Tt\BRperiod}%
+\def\br@Philemon{Fm\BRperiod}%
+\def\br@Hebrews{Eb\BRperiod}%
+\def\br@James{Gc\BRperiod}%
+\def\br@IPeter{\BRepistlenumberstyle{1}Pt\BRperiod}%
+\def\br@IIPeter{\BRepistlenumberstyle{2}Pt\BRperiod}%
+\def\br@IJohn{\BRepistlenumberstyle{1}Gv\BRperiod}%
+\def\br@IIJohn{\BRepistlenumberstyle{2}Gv\BRperiod}%
+\def\br@IIIJohn{\BRepistlenumberstyle{3}Gv\BRperiod}%
+\def\br@Jude{Gd\BRperiod}%
+\def\br@Revelation{Ap\BRperiod}}
 \newcommand*\br@Gn{\br@Genesis}%
 \newcommand*\br@Ex{\br@Exodus}%
 \newcommand*\br@Lv{\br@Leviticus}%
@@ -424,7 +498,8 @@
 \renewcommand*{\BRchsep}{;}%
 \renewcommand*{\BRvrsep}{--}%
 \renewcommand*{\BRvsep}{,}%
-\renewcommand*{\BRperiod}{}}
+\renewcommand*{\BRperiod}{}%
+}
 \newcommand*{\brs@jerusalem}{%
 \brabbrvname
 \renewcommand*{\BRbooknumberstyle}[1]{##1 }%
@@ -565,6 +640,26 @@
 \renewcommand*{\BRvsep}{,}%
 \renewcommand*{\BRperiod}{.}%
 }
+\newcommand*{\brs@CEI}{%
+\brceiabbrvname
+\renewcommand*{\BRbooknumberstyle}[1]{##1}%
+\renewcommand*{\BRepistlenumberstyle}[1]{##1}%
+\renewcommand*{\BRbooktitlestyle}[1]{##1}%
+\renewcommand*{\BRchapterstyle}[1]{##1}%
+\renewcommand*{\BRversestyle}[1]{##1}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+\renewcommand*{\BRbookof}{}%
+\renewcommand*{\BRgospel}{}%
+\renewcommand*{\BRepistletothe}{}%
+\renewcommand*{\BRepistleto}{}%
+\renewcommand*{\BRepistleof}{}%
+\renewcommand*{\BRbkchsep}{ }%
+\renewcommand*{\BRchvsep}{,}%
+\renewcommand*{\BRchsep}{;}%
+\renewcommand*{\BRvrsep}{--}%
+\renewcommand*{\BRvsep}{.}%
+\renewcommand*{\BRperiod}{}%
+}
 \newcommand*{\brs@text}{%
 \biblerefstyle{default}%
 \renewcommand{\BRbooknumberstyle}[1]{%
@@ -594,6 +689,7 @@ chapter \numberstringnum{##1}}%
 \DeclareOption{NTG}{\brs@NTG}
 \DeclareOption{MLA}{\brs@MLA}
 \DeclareOption{chicago}{\brs@chicago}
+\DeclareOption{CEI}{\brs@CEI}
 \DeclareOption{text}{\brs@text}
 \ProcessOptions
 \newcommand{\newbiblerefstyle}[2]{%
